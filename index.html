@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,user-scalable=no"/><title>deadbit-dev</title><style>body.loading #loading-space {
+<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,user-scalable=no"/><title>deadbit-dev</title><style>#loading-space {
       background: linear-gradient(180deg, #d309e1 0%, rgb(156, 26, 255) 100%);
       overflow: hidden;
       position: fixed;
@@ -7,18 +7,18 @@
       right:0;
       bottom:0;
       z-index: 100000;
-   }
-    body.loading #loader {
+    }
+    #loader {
       animation: loader 5s linear infinite;
       position: absolute;
       top: calc(50% - 20px);
       left: calc(50% - 20px);
     }
     @keyframes loader {
-      0% { left: -100px }
+      0% { left: -10% }
       100% { left: 110%; }
     }
-    body.loading #loader-box {
+    #loader-box {
           width: 50px;
           height: 50px;
       background: #fff;
@@ -38,7 +38,7 @@
       75% { transform: translateY(9px) rotate(67.5deg); }
       100% { transform: translateY(0) rotate(90deg); }
     }
-    body.loading #loader-box-shadow {
+    #loader-box-shadow {
       width: 50px;
       height: 5px;
       background: #000;
@@ -53,8 +53,24 @@
       50% {
         transform: scale(1.2,1);
       }
-    }</style><script defer="defer" src="main.bundle.js"></script></head><body class="loading"><div id="root"></div><div id="loading-space"><div id="loader"><div id="loader-box-shadow"></div><div id="loader-box"></div></div></div><script>window.onload = () => {
+    }</style><script defer="defer" src="main.bundle.js"></script></head><body><div id="root"></div><div id="loading-space"><div id="loader"><div id="loader-box-shadow"></div><div id="loader-box"></div></div></div><script>//const fadeIn = (el, timeout, display) => {
+    //    el.style.opacity = 0;
+    //    el.style.display = display || 'block';
+    //    el.style.transition = `opacity ${timeout}ms`;
+    //    setTimeout(() => {
+    //        el.style.opacity = 1;
+    //    }, 10);
+    //};
+    const fadeOut = (el, timeout) => {
+        el.style.opacity = 1;
+        el.style.transition = `opacity ${timeout}ms`;
+        el.style.opacity = 0;
+        setTimeout(() => {
+            el.style.display = 'none';
+        }, timeout);
+    };
+    window.onload = () => {
         window.setTimeout(function () {
-            document.body.classList.remove('loading');
-        }, 5000);
+            fadeOut(document.getElementById('loading-space'), 1000);
+        }, 2500);
     }</script></body></html>
