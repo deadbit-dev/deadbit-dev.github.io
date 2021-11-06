@@ -11,6 +11,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             title: 'deadbit-dev',
+            template: './template.html'
         }),
     ],
     mode: 'production',
