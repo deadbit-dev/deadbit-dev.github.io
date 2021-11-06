@@ -65,18 +65,18 @@
   </head>
   <body class="loading">
     <div id="root"></div>
-  <script>
-      window.onload = () => {
-        window.setTimeout(function () {
-            document.body.classList.remove('loading');
-        }, 5000);
-    }
-  </script>
-  </body>
   <div id="loading-space">
       <div id="loader">
         <div id="loader-box-shadow"></div>
         <div id="loader-box"></div>
       </div>
   </div>
+  <script>
+    window.onload = () => {
+        window.setTimeout(function () {
+            document.body.classList.remove('loading');
+        }, 5000);
+    }
+  </script>
+  </body>
 </html>
