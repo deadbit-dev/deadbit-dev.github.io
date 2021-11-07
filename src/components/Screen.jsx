@@ -1,15 +1,21 @@
 import React from "react";
 import Container from 'react-bootstrap/Container';
-import { ParallaxComponent } from "./ParallaxComponent";
+import { ParallaxLayer, ParallaxScene } from "./ParallaxComponent";
 import { Box } from "./Box";
 
 import "./style.css";
 
-export const Screen = (props) => (
-    // TODO: bootstrap Container
-    <Container id="screen">
-        <ParallaxComponent>
-            <Box />
-        </ParallaxComponent>
+export const Screen = (props) => {
+    const parallaxConf = {
+        relativeInput: true,
+        pointerEvents: true
+    };
+
+    return <Container id="screen">
+        <ParallaxScene config={parallaxConf}>
+            <ParallaxLayer depth="0.7">
+                <Box />
+            </ParallaxLayer>
+        </ParallaxScene>
     </Container>
-);
+};

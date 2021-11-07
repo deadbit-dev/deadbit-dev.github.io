@@ -8,10 +8,10 @@ export const Box = (props) => (
         className="drag-box"
         drag
         dragConstraints={{
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0
+            top: 25,
+            left: 25,
+            right: 25,
+            bottom: 25
         }}
         whileTap={{
             scale: [1, 1.7, 1.7, 1, 1],

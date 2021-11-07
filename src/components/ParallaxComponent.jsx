@@ -2,14 +2,22 @@ import React, { useEffect, useRef } from "react";
 import Parallax from "parallax-js";
 
 
-export const ParallaxComponent = (props) => {
+export const ParallaxLayer = (props) => {
+    return (
+        <div className="layer" data-depth={props.depth}>
+          {props.children}
+        </div>
+    );
+};
+
+export const ParallaxScene = (props) => {
     const sceneEl = useRef(null);
 
     useEffect(() => {
-        const parallaxInstance = new Parallax(sceneEl.current, {
-            clipRelativeInput: true,
-            pointerEvents: true
-        });
+        const parallaxInstance = new Parallax(
+            sceneEl.current,
+            props.config
+        );
         parallaxInstance.enable();
 
         return () => parallaxInstance.disable();
@@ -17,11 +25,7 @@ export const ParallaxComponent = (props) => {
 
     return (
         <div ref={sceneEl}>
-          <div className="layer"
-            data-depth="0.7"
-          >
-            {props.children}
-          </div>
+          {props.children}
         </div>
     );
 };
