@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 import "./style.css";
 
-export const Box = () => (
+export const Box = (props) => (
     <motion.div
         className="drag-box"
         drag
