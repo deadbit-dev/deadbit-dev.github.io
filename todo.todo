@@ -17,9 +17,13 @@
                     ✔ patricles.js @done(21-11-11 17:01)
                     ☐ mask
                 ✔ layer images @done(21-11-11 15:36)
-                    ☐ container #flex
-                        ✔ css image @done(21-11-10 19:43)
+                    ✔ container #flex @done(21-11-12 00:22)
+                        ✔ css image @done(21-11-12 00:23)
+                        ☐ fix image rezolution        <---!!!
                     ☐ selectable image
+                        ✔ click @done(21-11-12 00:23)
+                        ☐ click only color pixels      <---!!!
+                        ☐ hover effect
                     ☐ glitch/blur animation
         ☐ BODY
             ☐ func call api
