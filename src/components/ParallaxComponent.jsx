@@ -4,7 +4,7 @@ import Parallax from "parallax-js";
 
 export const ParallaxLayer = (props) => {
     return (
-        <div className="layer" data-depth={props.depth}>
+        <div data-depth={props.depth}>
           {props.children}
         </div>
     );
@@ -18,6 +18,7 @@ export const ParallaxScene = (props) => {
             sceneEl.current,
             props.config
         );
+        parallaxInstance.scalar(1.0, 1.0);
         parallaxInstance.enable();
 
         return () => parallaxInstance.disable();
