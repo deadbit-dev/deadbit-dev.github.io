@@ -62,35 +62,16 @@
         transform: scaleY(0.1);
         background: transparent;
       }
-    }</style><script defer="defer" src="main.bundle.js"></script></head><body><div id="loading-space"><div class="middle"><div class="bar bar1"></div><div class="bar bar2"></div><div class="bar bar3"></div><div class="bar bar4"></div><div class="bar bar5"></div><div class="bar bar6"></div><div class="bar bar7"></div><div class="bar bar8"></div></div></div><div id="root"></div><script>const fade = (el, at, vl, timeout) => {
-      // set transition element style atribyte by value
-      el.style.transition = `${at.map((element) => { 
-        return element + ` ${timeout}ms`;
-      })}`;
-      at.forEach(element => {
-        el.style[element] = vl;
-      });
-    };
-    const fadeOut = (el, at, vl, timeout) => {
-      // set transition element style atribyte by value and off element
-      fade(el, at, vl, timeout);
-      setTimeout(() => {
-        el.style.display = 'none';
-      }, timeout);
-    };
-    const filter = [
-      '-webkit-filter',
-      '-moz-filter',
-      'filter'
-    ];
-    const loader = (app, loader) => {
+    }</style><script defer="defer" src="main.bundle.js"></script></head><body><div id="loading-space"><div class="middle"><div class="bar bar1"></div><div class="bar bar2"></div><div class="bar bar3"></div><div class="bar bar4"></div><div class="bar bar5"></div><div class="bar bar6"></div><div class="bar bar7"></div><div class="bar bar8"></div></div></div><div id="root"></div><script>const loader = (app, loader) => {
       // loading
-      fade(app, filter, `blur(50px)`, 0);
+      app.classList.add("blur-effect");
+      app.classList.add("blur-on");
       window.onload = () => {
         // FIXME: loading timeout
         setTimeout(function () {
-          fadeOut(loader, ['opacity'], 0, 100);
-          setTimeout(fade(app, filter, 'none', 1000), 100);
+          loader.style.display = 'none';
+          app.classList.add("blur-off");
+          setTimeout(app.classList.remove('blur-on'), 1000);
         }, 2500);
       }
     };
