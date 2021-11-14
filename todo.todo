@@ -10,16 +10,14 @@
     ✔ bootstrap.css @done(21-11-11 17:09)
     ☐ SCREEN
         ☐ BACKGROUND
-            ☐ set body color gradient
-            ✔ parallax.js @done(21-11-11 01:57)
-            ✔ parallax scene @done(21-11-11 15:36)
+            ✔ set body color gradient @done(21-11-14 18:20)
                 ✔ layer particles @done(21-11-11 15:36)
                     ✔ patricles.js @done(21-11-11 17:01)
                     ☐ mask
                 ✔ layer images @done(21-11-11 15:36)
                     ✔ container #flex @done(21-11-12 00:22)
                         ✔ css image @done(21-11-12 00:23)
-                        ☐ fix image rezolution        <---!!!
+                        ✔ fix image rezolution        <---!!! @done(21-11-14 18:16)
                     ☐ selectable image
                         ✔ click @done(21-11-12 00:23)
                         ☐ click only color pixels      <---!!!
@@ -47,6 +45,7 @@
     ☐ bottom line under the preloader bars
     ☐ down to up bars the preloader animations
     ☐ outline select css border line
+    ☐ parallax
     ☐ gyroscope
     ☐ scan code -> calc hex -> popup message            <---EASTER EGG---
     ☐ drop image -> as mask -> particles           <---EASTER EGG---
