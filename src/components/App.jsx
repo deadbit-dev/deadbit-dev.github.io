@@ -1,8 +1,6 @@
 import React from "react";
-import { Screen } from "./Screen";
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import "./assets/style.css";
+import { Screen } from "./Screen";
 
 export const App = () => (
     <Screen />

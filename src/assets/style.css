@@ -1,22 +1,14 @@
-#screen {
-  width: 100vw;
-  height: 100vh;
+html, 
+body {
+  margin: 0;
+  padding: 0;
   overflow: hidden;
 }
 
-.bg {
-  margin: 0;
-  padding: 0;
-  background-image: linear-gradient(0deg, rgb(0, 0, 0), rgb(21, 21, 21));
+#screen {
+  width: 100vw;
+  height: 100vh;
 }
-
-.bg-image {
-  background-image: url('./bg.png');
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center bottom;
-}
-
 
 .blur-effect {
   transition: -webkit-filter 1000ms, -moz-filter 1000ms, -ms-filter 1000ms, -o-filter 1000ms, filter 1000ms;
@@ -39,7 +31,7 @@
 }
 
 #loading-space {
-  background-color:black;
+  background-color: white;
   overflow: hidden;
   position: fixed;
   left: 0;

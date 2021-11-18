@@ -1,11 +1,11 @@
 import React from 'react';
-import { Background } from './Background';
 
+import { Body } from './Body';
 
 export const Screen = () => {
     return (
         <div id="screen">
-            <Background />
+            <Body />
         </div>
     );
 };

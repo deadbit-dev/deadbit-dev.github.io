@@ -14,7 +14,7 @@ module.exports = {
             template: './template.html'
         }),
     ],
-    mode: 'production',
+    mode: 'development',
     module: {
         rules: [
             {
@@ -33,6 +33,10 @@ module.exports = {
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/i,
                 type: 'asset/resource',
+            },
+            {
+                test: /\.(glb|gltf)$/,
+                use: ['file-loader'],
             },
         ],
     },
