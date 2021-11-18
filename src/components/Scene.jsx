@@ -1,7 +1,8 @@
 import React, { Suspense} from 'react';
 import { Environment, OrbitControls} from '@react-three/drei';
 
-import Model from './Model';
+import { Model } from './Model';
+
 
 export const Scene = () => {
     return (

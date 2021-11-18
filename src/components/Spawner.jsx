@@ -1,0 +1,77 @@
+import React, { useEffect, useState } from 'react';
+
+
+export const Spawner = (props) => {
+    const [elements, setElements] = useState(null);
+
+    const scaleByWeight = (weight) => {
+        // TODO: return scale [ , , ]
+    };
+
+    const posYByScale = (scale) => {
+        // TODO: return position by Y
+    };
+
+    const cfXByCount = (count) => {
+        // TODO: return cf by X
+    };
+
+    const cfYByCount = (count) => {
+        // TODO: return cf by Y
+    };
+
+    const genMesh = (position, scale) => {
+        return (
+            <mesh
+                castShadow
+                receiveShadow
+                {...props}
+                position={position}
+                scale={scale}
+            />
+        );
+    };
+
+    const generator = (data) => {
+        let result = null;
+        const KEY = 0;
+        const VALUE = 1;
+        const dataArray = Object.entries(data);
+        const cfX = cfXByCount(dataArray.length);
+
+        dataArray.forEach((repo, repoIndex) => {
+            const weightsArray = Object.entries(repo[VALUE]);
+            const cfY = cfYByCount(weightsArray.length);
+            weightsArray.forEach((lang, langIndex) => {
+                const weight = lang[VALUE];
+                const scale = scaleByWeight(weight);
+                const posX = cfX * repoIndex;
+                const posY = cfY * langIndex + posYByScale(scale);
+                const position = [posX, posY, 0];
+                result.push(genMesh(position, scale));
+            });
+        });
+
+        setElements(result);
+   };
+
+    useEffect(() => {
+        // TODO: call API return data
+        generator({
+            'repo1': {
+                'cpp': 10,
+                'python': 5
+            },
+            'repo2': {
+                'python': 15,
+                'js': 35
+            }
+        });
+    });
+
+    return (
+        <group>
+            {elements}
+        </group>
+    );
+};

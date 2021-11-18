@@ -24,10 +24,10 @@
                         ✔ controls @done(21-11-17 04:56)
                     ☐ HEX PLATFORM
                         ✔ mesh @done(21-11-16 16:04)
-                        ☐ materiar/shader
+                        ✔ materiar/shader @done(21-11-18 14:49)
                     ☐ ELEMENT
                         ☐ generate box mesh by API
-                        ☐ material/shader
+                        ✔ material/shader @done(21-11-18 14:49)
                         ☐ scale by weight API
                         ☐ part repo API
                         ☐ selctable repo
@@ -35,11 +35,12 @@
 ☐ FIXME
     ☐ off rotate and zoom
     ☐ optimize the bundle module #parts
+    ✔ ligth @done(21-11-18 14:48)
     ☐ mesh
-        ☐ hex ctrl+b blender
-    ☐ materials
-        ☐ more glass and blur
-        ☐ shadows
+        ☐ hex and cube ctrl+b blender
+    ✔ materials @done(21-11-18 14:48)
+        ✔ more glass and blur @done(21-11-18 14:48)
+        ✔ shadows @done(21-11-18 14:48)
 
 ☐ MB
     ☐ bottom line under the preloader bars
