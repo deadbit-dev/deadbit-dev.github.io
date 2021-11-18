@@ -9,33 +9,40 @@
     ☐ move preloader system from template
     ☐ SCREEN
         ☐ BODY
-            ☐ API
-            ☐ RENDER SYSTEM
-                ✔ @react-three/fiber @done(21-11-17 04:53)
-                ✔ @react-three/dri @done(21-11-17 04:54)
-                ☐ SCENE
-                    ✔ load mesh @done(21-11-17 04:54)
-                    ☐ loading material/shader
-                    ✔ camera @done(21-11-17 04:56)
-                    ☐ lock camera
-                    ☐ ligth/shadows
-                    ☐ skybox
-                    ✔ controls @done(21-11-17 04:56)
-                ☐ HEX PLATFORM
-                    ✔ mesh @done(21-11-16 16:04)
-                    ☐ materiar/shader
-                ☐ ELEMENT
-                    ☐ generate box mesh by API
-                    ☐ material/shader
-                    ☐ scale by weight API
-                    ☐ part repo API
-                    ☐ selctable repo
+            ☐ SCENE
+                ☐ API
+                ☐ RENDER SYSTEM
+                    ✔ @react-three/fiber @done(21-11-17 04:53)
+                    ✔ @react-three/dri @done(21-11-17 04:54)
+                    ☐ SCENE
+                        ✔ load mesh @done(21-11-17 04:54)
+                        ✔ loading material/shader @done(21-11-18 04:45)
+                        ✔ camera @done(21-11-17 04:56)
+                        ✔ lock camera @done(21-11-17 22:11)
+                        ✔ ligth/shadows @done(21-11-18 04:45)
+                        ✔ Environment @done(21-11-17 22:11)
+                        ✔ controls @done(21-11-17 04:56)
+                    ☐ HEX PLATFORM
+                        ✔ mesh @done(21-11-16 16:04)
+                        ☐ materiar/shader
+                    ☐ ELEMENT
+                        ☐ generate box mesh by API
+                        ☐ material/shader
+                        ☐ scale by weight API
+                        ☐ part repo API
+                        ☐ selctable repo
 
 ☐ FIXME
     ☐ off rotate and zoom
     ☐ optimize the bundle module #parts
+    ☐ mesh
+        ☐ hex ctrl+b blender
+    ☐ materials
+        ☐ more glass and blur
+        ☐ shadows
 
 ☐ MB
     ☐ bottom line under the preloader bars
     ☐ down to up bars the preloader animations
+    ☐ dark/white themes
     ☐ JARVIS as AI for user
