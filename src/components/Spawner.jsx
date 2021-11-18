@@ -39,14 +39,14 @@ export const Spawner = (props) => {
         const dataArray = Object.entries(data);
         const cfX = cfXByCount(dataArray.length);
 
-        dataArray.forEach((repo, repoIndex) => {
-            const weightsArray = Object.entries(repo[VALUE]);
+        dataArray.forEach((lang, langIndex) => {
+            const weightsArray = Object.entries(lang[VALUE]);
             const cfY = cfYByCount(weightsArray.length);
-            weightsArray.forEach((lang, langIndex) => {
-                const weight = lang[VALUE];
+            weightsArray.forEach((repo, repoIndex) => {
+                const weight = repo[VALUE];
                 const scale = scaleByWeight(weight);
-                const posX = cfX * repoIndex;
-                const posY = cfY * langIndex + posYByScale(scale);
+                const posX = cfX * langIndex;
+                const posY = cfY * repoIndex + posYByScale(scale);
                 const position = [posX, posY, 0];
                 result.push(genMesh(position, scale));
             });
@@ -58,13 +58,15 @@ export const Spawner = (props) => {
     useEffect(() => {
         // TODO: call API return data
         generator({
-            'repo1': {
-                'cpp': 10,
-                'python': 5
+            'cpp': {
+                'repo1': 10
             },
-            'repo2': {
-                'python': 15,
-                'js': 35
+            'python': {
+                'repo1': 5,
+                'repo2': 15
+            },
+            'js': {
+                'repo2': 35
             }
         });
     });
