@@ -4,60 +4,38 @@ import React, { useEffect, useState } from 'react';
 export const Spawner = (props) => {
     const [elements, setElements] = useState(null);
 
-    const scaleByWeight = (weight) => {
-        // TODO: return scale [ , , ]
-    };
-
-    const posYByScale = (scale) => {
-        // TODO: return position by Y
-    };
-
-    const cfXByCount = (count) => {
-        // TODO: return cf by X
-    };
-
-    const cfYByCount = (count) => {
-        // TODO: return cf by Y
-    };
-
-    const genMesh = (position, scale) => {
-        return (
-            <mesh
-                castShadow
-                receiveShadow
-                {...props}
-                position={position}
-                scale={scale}
-            />
-        );
-    };
-
-    const generator = (data) => {
-        let result = null;
-        const KEY = 0;
-        const VALUE = 1;
+    const core = (data) => {
+        let result = new Array();
+        const distance = props.originalScale;
+        const offset = props.originalScale*2;
         const dataArray = Object.entries(data);
-        const cfX = cfXByCount(dataArray.length);
-
+        const count = dataArray.length - 1;
+        const start = 0 - (count / 2) * (offset + distance);
         dataArray.forEach((lang, langIndex) => {
-            const weightsArray = Object.entries(lang[VALUE]);
-            const cfY = cfYByCount(weightsArray.length);
+            const weightsArray = Object.entries(lang[1]);
+            const posX = start + langIndex * (offset + distance);
             weightsArray.forEach((repo, repoIndex) => {
-                const weight = repo[VALUE];
-                const scale = scaleByWeight(weight);
-                const posX = cfX * langIndex;
-                const posY = cfY * repoIndex + posYByScale(scale);
+                const weight = repo[1];
+                const yScale = weight / 10;
+                const posY = yScale * props.originalScale + repoIndex * offset + distance;
                 const position = [posX, posY, 0];
-                result.push(genMesh(position, scale));
+                const scale = [1, yScale, 1];
+                const meshKey = langIndex.toString() + repoIndex.toString();
+                result.push(
+                    <mesh
+                        {...props}
+                        position={position}
+                        scale={scale}
+                        key={meshKey}
+                    />
+                );
             });
         });
-
-        setElements(result);
+        return result;
    };
 
-    useEffect(() => {
-        // TODO: call API return data
-        generator({
+   const api = () => {
+       return {
             'cpp': {
                 'repo1': 10
             },
@@ -68,7 +46,13 @@ export const Spawner = (props) => {
             'js': {
                 'repo2': 35
             }
-        });
+        };
+   };
+
+    useEffect(() => {
+        const data = api();
+        const elements = core(data);
+        setElements(elements);
     });
 
     return (
