@@ -8,47 +8,61 @@
 ☐ APP
     ☐ move preloader system from template
     ☐ SCREEN
-        ☐ BODY
-            ☐ SCENE
-                ☐ API
-                ☐ RENDER SYSTEM
-                    ✔ @react-three/fiber @done(21-11-17 04:53)
-                    ✔ @react-three/dri @done(21-11-17 04:54)
-                    ☐ SCENE
-                        ✔ load mesh @done(21-11-17 04:54)
-                        ✔ loading material/shader @done(21-11-18 04:45)
-                        ✔ camera @done(21-11-17 04:56)
-                        ✔ lock camera @done(21-11-17 22:11)
-                        ✔ ligth/shadows @done(21-11-18 04:45)
-                        ✔ Environment @done(21-11-17 22:11)
-                        ✔ controls @done(21-11-17 04:56)
-                    ☐ HEX PLATFORM
-                        ✔ mesh @done(21-11-16 16:04)
-                        ✔ materiar/shader @done(21-11-18 14:49)
-                    ☐ ELEMENT
-                        ✔ material/shader @done(21-11-18 14:49)
-                        ✔ Spawn mesh @done(21-11-19 22:13)
-                        ☐ selctable mesh
-                        ✔ scale by weight @done(21-11-19 22:14)
-                        ☐ API
+        ☐ API
+        ☐ RENDER SYSTEM
+            ✔ @react-three/fiber @done(21-11-17 04:53)
+            ✔ @react-three/dri @done(21-11-17 04:54)
+            ✔ SCENE @done(21-11-20 16:38)
+                ✔ Load mesh @done(21-11-17 04:54)
+                ✔ Loading material/shader @done(21-11-18 04:45)
+                ✔ Ligth @done(21-11-18 04:45)
+                ✔ Camera @done(21-11-17 04:56)
+                    ✔ lock camera @done(21-11-17 22:11)
+                ✔ Controls @done(21-11-17 04:56)
+                    ✔ lock controls @done(21-11-17 22:11)
+                ✔ Environment @done(21-11-17 22:11)
+            ✔ HEX PLATFORM @done(21-11-20 16:38)
+                ✔ mesh @done(21-11-16 16:04)
+                ✔ materiar/shader @done(21-11-18 14:49)
+            ✔ APIParser @done(21-11-19 22:13)
+            ✔ ELEMENT @done(21-11-20 16:38)
+                ✔ material/shader @done(21-11-18 14:49)
+                ✔ scale by weight @done(21-11-19 22:14)
+                ✔ select mesh @done(21-11-20 16:38)
+                ✔ change material for selected mesh @done(21-11-20 19:21)
+                ☐ select -> part group
+            ☐ GUI
+                ☐ total percent each by lang
+                ☐ selected one lang -> percent the lang-repo
 
 ☐ FIXME
+    ✔ hex mesh center to top @done(21-11-21 01:39)
+    ✔ distanse by y @done(21-11-21 02:09)
+    ☐ hover mesh, select both, raycast bug
     ☐ off rotate and zoom
     ☐ optimize the bundle module #parts
-    ✔ ligth @done(21-11-18 14:48)
-    ☐ mesh
-        ☐ hex and cube ctrl+b blender
-    ✔ materials @done(21-11-18 14:48)
-        ✔ more glass and blur @done(21-11-18 14:48)
-        ✔ shadows @done(21-11-18 14:48)
 
 ☐ REFACTORING
-    ☐ Model
-    ☐ Spawner
+
+    ✔ Model should load model by name file return nodes and materials @done(21-11-20 18:32)
+        ✔ remove Model, declire in Scene and call useGLTF @done(21-11-20 18:32)
+    ✔ Scene set group and meshes by Model @done(21-11-20 18:33)
+        ✔ remove Model, loading with useGLTF @done(21-11-20 18:33)
+    ☐ Scene
+    ☐ APIParser
     ☐ Scale by weight
 
-☐ MB
+☐ Castomization
+    ☐ change cursor
     ☐ bottom line under the preloader bars
     ☐ down to up bars the preloader animations
     ☐ dark/white themes
+    ☐ animation Mesh
+    ☐ by hover mesh to color bound
+    ☐ popup window selected repo
+
+
+☐ MatBE
     ☐ JARVIS as AI for user
+        ☐ Shader
+        ☐ SpeachKit
