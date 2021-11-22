@@ -13,15 +13,16 @@ export const Scene = () => {
 
     useEffect(() => {
         const response = API();
-        const items = APIParser(
-            response,
-            Math.abs(nodes.Cube.geometry.attributes.position.array[0])
-        );
+        const items = APIParser(response, nodes);
         setItems(items);
     }, []);
 
     return (
-        <Canvas shadows dpr={Math.max(window.devicePixelRatio, 2)} camera={{ position: [0, 2.5, 3.5], fov: 50 }}>
+        <Canvas 
+            shadows 
+            dpr={Math.max(window.devicePixelRatio, 2)} 
+            camera={{ position: [0, 2.5, 3.5], fov: 50 }}
+        >
             <ambientLight intensity={0.7} />
             <directionalLight
                 castShadow

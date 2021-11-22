@@ -1,7 +1,6 @@
 export const API = () => {
     return {
         'cpp': {
-            'repo1': 10,
             'repo3': 55
         },
         'python': {
@@ -9,39 +8,43 @@ export const API = () => {
             'repo2': 15
         },
         'js': {
-            'repo2': 35
+            'repo2': 25,
+            'repo1': 15
         },
-        'ts': {
-            'repo2': 5
+        'css': {
+            'repo3': 35
         }
     };
 };
 
-export const APIParser = (data, size) => {
+export const APIParser = (data, nodes) => {
     let result = new Array();
-    const distanceX = size;
-    const distanceY = size;
-    const offset = size*2;
+    let scaleX = 1;
+    let scaleY = 1;
+    let scaleZ = 1;
+    let posX = 0;
+    let posY = 0;
+    let posZ = 0;
+    const sizeX = Math.abs(nodes.Cube.geometry.boundingBox.min.x - nodes.Cube.geometry.boundingBox.max.x);
+    const sizeY = nodes.Cube.geometry.boundingBox.max.y;
+    const distanceX = sizeX / 2;
+    const distanceY = 0;
     const dataArray = Object.entries(data);
-    const count = dataArray.length - 1;
-    const start = 0 - (count / 2) * (offset + distanceX);
     dataArray.forEach((lang, langIndex) => {
         const weightsArray = Object.entries(lang[1]);
-        const posX = start + langIndex * (offset + distanceX);
+        posX = nodes.Hex.geometry.boundingBox.min.x + langIndex * (scaleX * sizeX + distanceX) + distanceX * 2;
+        posY = nodes.Hex.geometry.boundingBox.max.y;
         weightsArray.forEach((repo, repoIndex) => {
             const weight = repo[1];
-            const yScale = weight / 10;
-            const posY = yScale * size + repoIndex * (offset + distanceY) + distanceY;
-            const position = [posX, posY, 0];
-            const scale = [1, yScale, 1];
-            const key = langIndex.toString() + repoIndex.toString();
+            scaleY = weight / 10;
+            posY += scaleY * sizeY + distanceY * repoIndex;
             result.push({
-                'key': key,
-                'position': position,
-                'scale': scale
+                'key': langIndex.toString() + repoIndex.toString(),
+                'position': [posX, posY, posZ],
+                'scale': [scaleX, scaleY, scaleZ]
             });
+            posY += scaleY * sizeY;
         });
     });
-
     return result;
 };
