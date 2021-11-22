@@ -1,4 +1,4 @@
-import { Vector3 } from "three";
+import { Vector2 } from "three";
 
 export const API = () => {
     return {
@@ -19,34 +19,38 @@ export const API = () => {
     };
 };
 
-export const APIParser = (data, nodes) => {
+export const APIParser = (data, nodes, index) => {
     let result = new Array();
-    let scale = new Vector3(1, 1, 1);
-    let pos = new Vector3(0, 0, 0);
-    const sizeX = Math.abs(nodes.Cube.geometry.boundingBox.min.x - nodes.Cube.geometry.boundingBox.max.x) * scale.x;
-    const sizeY = Math.abs(nodes.Cube.geometry.boundingBox.min.y - nodes.Cube.geometry.boundingBox.max.y) * scale.y;
-    const halfX = nodes.Cube.geometry.boundingBox.max.x * scale.x;
-    const halfY = nodes.Cube.geometry.boundingBox.max.y * scale.y;
-    const startX = nodes.Hex.geometry.boundingBox.min.x;
-    const startY = nodes.Hex.geometry.boundingBox.max.y;
-    const distanceX = sizeX / 2;
-    const distanceY = 0;
-    const dataArray = Object.entries(data);
-    dataArray.forEach((lang, langIndex) => {
-        const weightsArray = Object.entries(lang[1]);
-        const offsetX = langIndex * (sizeX + distanceX);
-        pos.setX(startX + distanceX + offsetX + halfX);
-        pos.setY(startY);
-        weightsArray.forEach((repo, repoIndex) => {
-            const weight = repo[1];
+    let pos = new Vector2(0, 0);
+    let scale = new Vector2(1, 1);
+    const distance = new Vector2(0.05, 0.05);
+    const start = new Vector2(
+        nodes.Hex.geometry.boundingBox.min.x,
+        nodes.Hex.geometry.boundingBox.max.y,
+    );
+    const half = new Vector2(
+        nodes.Cube.geometry.boundingBox.max.x * scale.x,
+        nodes.Cube.geometry.boundingBox.max.y * scale.y,
+    );
+    const size = new Vector2(
+        Math.abs(nodes.Cube.geometry.boundingBox.min.x - nodes.Cube.geometry.boundingBox.max.x) * scale.x,
+        Math.abs(nodes.Cube.geometry.boundingBox.min.y - nodes.Cube.geometry.boundingBox.max.y) * scale.y,
+    );
+    for(const [lang, reps, langIndex = langIndex ?? 0, repoIndex = 0] of Object.entries(data)){
+        const offsetX = (size.x + distance.x) * langIndex;
+        pos.setX(start.x + distance.x + offsetX + half.x);
+        pos.setY(start.y);
+        for(const [rep, weight] of Object.entries(reps)){
             scale.setY(weight / 10); // FIXME: weight
-            pos.setY(pos.y + scale.y * sizeY + distanceY * repoIndex);
+            pos.setY(pos.y + scale.y * size.y + (langIndex == index ? distance.y : 0) * repoIndex);
             result.push({
-                'key': langIndex.toString() + repoIndex.toString(),
-                'position': [pos.x, pos.y - scale.y * halfY, pos.z],
-                'scale': [scale.x, scale.y, scale.z]
+                'key': lang + rep,
+                'position': [pos.x, pos.y - scale.y * half.y, 0],
+                'scale': [scale.x, scale.y, 1]
             });
-        });
-    });
+            ++repoIndex;
+        }
+        ++langIndex;
+    }
     return result;
 };

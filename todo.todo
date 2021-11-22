@@ -49,8 +49,7 @@
         ✔ remove Model, declire in Scene and call useGLTF @done(21-11-20 18:32)
     ✔ Scene set group and meshes by Model @done(21-11-20 18:33)
         ✔ remove Model, loading with useGLTF @done(21-11-20 18:33)
-    ☐ APIParser
-    ☐ Flexeble horizontal scale
+    ✔ APIParser @done(21-11-22 17:20)
 
 ☐ Castomization
     ☐ change cursor
@@ -63,6 +62,7 @@
 
 
 ☐ MatBE
+    ☐ Flexeble horizontal scale
     ☐ JARVIS as AI for user
         ☐ Shader
         ☐ SpeachKit

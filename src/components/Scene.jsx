@@ -13,7 +13,7 @@ export const Scene = () => {
 
     useEffect(() => {
         const response = API();
-        const items = APIParser(response, nodes);
+        const items = APIParser(response, nodes, 1);
         setItems(items);
     }, []);
 
