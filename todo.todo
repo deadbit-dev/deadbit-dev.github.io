@@ -37,7 +37,8 @@
 
 ☐ FIXME
     ✔ hex mesh center to top @done(21-11-21 01:39)
-    ✔ distanse by y @done(21-11-21 02:09)
+    ✔ start distance by y in 0 @done(21-11-22 04:27)
+    ✔ keep posY @done(21-11-22 04:29)
     ☐ hover mesh, select both, raycast bug
     ☐ off rotate and zoom
     ☐ optimize the bundle module #parts
@@ -48,9 +49,8 @@
         ✔ remove Model, declire in Scene and call useGLTF @done(21-11-20 18:32)
     ✔ Scene set group and meshes by Model @done(21-11-20 18:33)
         ✔ remove Model, loading with useGLTF @done(21-11-20 18:33)
-    ☐ Scene
     ☐ APIParser
-    ☐ Scale by weight
+    ☐ Flexeble horizontal scale
 
 ☐ Castomization
     ☐ change cursor
