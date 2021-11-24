@@ -30,7 +30,7 @@
                 ✔ scale by weight @done(21-11-19 22:14)
                 ✔ select mesh @done(21-11-20 16:38)
                 ✔ change material for selected mesh @done(21-11-20 19:21)
-                ☐ select -> part group
+                ✔ select -> part group @done(21-11-24 20:16)
             ☐ GUI
                 ☐ total percent each by lang
                 ☐ selected one lang -> percent the lang-repo
@@ -39,7 +39,7 @@
     ✔ hex mesh center to top @done(21-11-21 01:39)
     ✔ start distance by y in 0 @done(21-11-22 04:27)
     ✔ keep posY @done(21-11-22 04:29)
-    ☐ hover mesh, select both, raycast bug
+    ✔ hover mesh, select both, raycast bug @done(21-11-24 21:05)
     ☐ off rotate and zoom
     ☐ optimize the bundle module #parts
 
@@ -53,10 +53,11 @@
 
 ☐ Castomization
     ☐ change cursor
-    ☐ bottom line under the preloader bars
-    ☐ down to up bars the preloader animations
+    ✔ change preloader @done(21-11-24 21:05)
+        ✔ bottom line under the preloader bars @done(21-11-24 21:05)
+        ✔ down to up bars the preloader animations @done(21-11-24 21:05)
     ☐ dark/white themes
-    ☐ animation Mesh
+    ✔ animation Mesh @done(21-11-24 21:05)
     ☐ by hover mesh to color bound
     ☐ popup window selected repo
 
@@ -66,3 +67,6 @@
     ☐ JARVIS as AI for user
         ☐ Shader
         ☐ SpeachKit
+
+☐ ASK
+    ☐ full size and each time * 0.5 to found out part or one time * 0.5 full size to found out part size and each time + part to found out center
