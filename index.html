@@ -1,14 +1,13 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,user-scalable=no"/><title>deadbit-dev</title><script defer="defer" src="main.bundle.js"></script></head><body><div id="loading-space"><div class="middle"><div class="bar bar1"></div><div class="bar bar2"></div><div class="bar bar3"></div><div class="bar bar4"></div><div class="bar bar5"></div><div class="bar bar6"></div><div class="bar bar7"></div><div class="bar bar8"></div></div></div><div id="root"></div><script>const loader = (app, loader) => {
+<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,user-scalable=no"/><title>deadbit-dev</title><script defer="defer" src="main.bundle.js"></script></head><body><div id="loading-space"><div class="wrapper"><span class="circle circle-1"></span> <span class="circle circle-2"></span> <span class="circle circle-3"></span> <span class="circle circle-4"></span> <span class="circle circle-5"></span> <span class="circle circle-6"></span> <span class="circle circle-7"></span> <span class="circle circle-8"></span></div></div><div id="root"></div><script>const loader = (app, loader) => {
       // loading
       app.classList.add("blur-effect");
       app.classList.add("blur-on");
       window.onload = () => {
-        // FIXME: loading timeout
-        setTimeout(function () {
+        setTimeout(() => {
           loader.style.display = 'none';
           app.classList.add("blur-off");
           setTimeout(app.classList.remove('blur-on'), 1000);
-        }, 2500);
+        }, 1500);
       }
     };
     loader(
