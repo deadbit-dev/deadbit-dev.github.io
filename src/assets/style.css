@@ -10,6 +10,17 @@ body {
   height: 100vh;
 }
 
+#loading-space {
+  background-color: white;
+  overflow: hidden;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right:0;
+  bottom:0;
+  z-index: 100000;
+}
+
 .blur-effect {
   transition: -webkit-filter 1000ms, -moz-filter 1000ms, -ms-filter 1000ms, -o-filter 1000ms, filter 1000ms;
 }
@@ -30,68 +41,57 @@ body {
   filter: none;
 }
 
-#loading-space {
-  background-color: white;
-  overflow: hidden;
-  position: fixed;
-  left: 0;
-  top: 0;
-  right:0;
-  bottom:0;
-  z-index: 100000;
+.wrapper{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%); 
 }
-.middle {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  position: absolute;
-}
-.bar {
-  width: 10px;
-  height: 70px;
-  background: #fff;
+.circle{
   display: inline-block;
+  width: 15px;
+  height: 15px;
+  background-color: #000000;
+  border-radius: 50%;
+  animation: loading 1.5s cubic-bezier(.8, .5, .2, 1.4) infinite;
   transform-origin: bottom center;
-  border-top-right-radius: 20px;
-  border-top-left-radius: 20px;
-  /*box-shadow:5px 10px 20px inset rgba(255,23,25.2);*/
-  animation: loader 1.2s linear infinite;
+  position: relative;
 }
-.bar1 {
+@keyframes loading{
+  0%{
+    transform: translateY(0px);
+    background-color: #000000;
+  }
+  50%{
+    transform: translateY(50px);
+    background-color: #ffffff;
+  }
+  100%{
+    transform: translateY(0px);
+    background-color: #000000;
+  }
+}
+.circle-1{
   animation-delay: 0.1s;
 }
-.bar2 {
+.circle-2{
   animation-delay: 0.2s;
 }
-.bar3 {
+.circle-3{
   animation-delay: 0.3s;
 }
-.bar4 {
+.circle-4{
   animation-delay: 0.4s;
 }
-.bar5 {
+.circle-5{
   animation-delay: 0.5s;
 }
-.bar6 {
+.circle-6{
   animation-delay: 0.6s;
 }
-.bar7 {
+.circle-7{
   animation-delay: 0.7s;
 }
-.bar8 {
+.circle-8{
   animation-delay: 0.8s;
-}
-
-@keyframes loader {
-  0% {
-    transform: scaleY(0.1);
-  }
-  50% {
-    transform: scaleY(1);
-    background: red;
-  }
-  100% {
-    transform: scaleY(0.1);
-    background: transparent;
-  }
 }

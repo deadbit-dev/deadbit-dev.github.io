@@ -8,6 +8,7 @@ import { API } from "../utils/API";
 export const Scene = () => {
     const [data, setData] = useState();
     
+    // after mount component - start
     useEffect(() => {
         const response = API();
         setData(response);

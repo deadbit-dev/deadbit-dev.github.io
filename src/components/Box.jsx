@@ -9,12 +9,14 @@ export const Box = (props) => {
             position={props.position}
             scale={props.scale}
             onClick={(event) => {
-               console.log('box');
+                console.log('https://github.com/deadbit-dev');
             }}
             onPointerOver={(event) => {
+                event.stopPropagation();
                 event.eventObject.material = props.materials.Hex;
             }}
             onPointerOut={(event) => {
+                event.stopPropagation();
                 event.eventObject.material = props.materials.Cube;
             }}
         />
