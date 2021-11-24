@@ -12,9 +12,6 @@ export const API = () => {
         'js': {
             'repo2': 25,
             'repo1': 15
-        },
-        'css': {
-            'repo3': 35
         }
     };
 };
