@@ -1,19 +1,10 @@
-import React, { Suspense, useEffect, useState } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { Environment, OrbitControls} from '@react-three/drei';
-import { Graph } from './Graph';
-import { API } from "../utils/API";
+import React, { Suspense } from "react";
+import { Canvas } from "@react-three/fiber";
+import { Environment, OrbitControls } from "@react-three/drei";
+import { Graph } from "./Graph";
 
 
-export const Scene = () => {
-    const [data, setData] = useState();
-    
-    // after mount component - start
-    useEffect(() => {
-        const response = API();
-        setData(response);
-    }, []);
-
+export const Scene = (props) => {
     return (
         <Canvas 
             shadows 
@@ -27,7 +18,7 @@ export const Scene = () => {
                 intensity={0.5}
             />
             <Suspense fallback={null}>
-                <Graph data={data} />
+                <Graph datGUI={props.datGUI} />
                 <Environment preset="city" />
             </Suspense>
             <OrbitControls 
