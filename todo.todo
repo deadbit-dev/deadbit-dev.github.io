@@ -24,17 +24,29 @@
             ✔ HEX PLATFORM @done(21-11-20 16:38)
                 ✔ mesh @done(21-11-16 16:04)
                 ✔ materiar/shader @done(21-11-18 14:49)
-            ✔ APIParser @done(21-11-19 22:13)
-            ✔ ELEMENT @done(21-11-20 16:38)
+            ✔ Column @done(21-11-25 19:45)
+                ✔ positioning @done(21-11-25 19:45)
+                ✔ selecting @done(21-11-25 19:45)
+            ✔ Box @done(21-11-20 16:38)
                 ✔ material/shader @done(21-11-18 14:49)
-                ✔ scale by weight @done(21-11-19 22:14)
+                ✔ scaling by weight @done(21-11-19 22:14)
                 ✔ select mesh @done(21-11-20 16:38)
                 ✔ change material for selected mesh @done(21-11-20 19:21)
                 ✔ select -> part group @done(21-11-24 20:16)
             ☐ GUI
-                ☐ total percent each by lang
-                ☐ selected one lang -> percent the lang-repo
-
+                ✔ add DatGUI @done(21-11-25 19:30)
+                ☐ text
+                    ✔ anchors @done(21-11-25 19:41)
+                    ✔ size @done(21-11-25 19:41)
+                    ✔ color @done(21-11-25 19:43)
+                    ✔ position @done(21-11-25 19:42)
+                    ✔ rotation @done(21-11-25 19:42)
+                    ☐ font
+                ☐ material
+                    ☐ color
+                ✔ total weight for column @done(21-11-25 19:48)
+                ☐ weigh for box
+ 
 ☐ FIXME
     ✔ hex mesh center to top @done(21-11-21 01:39)
     ✔ start distance by y in 0 @done(21-11-22 04:27)
@@ -42,31 +54,19 @@
     ✔ hover mesh, select both, raycast bug @done(21-11-24 21:05)
     ☐ off rotate and zoom
     ☐ optimize the bundle module #parts
-
-☐ REFACTORING
-
-    ✔ Model should load model by name file return nodes and materials @done(21-11-20 18:32)
-        ✔ remove Model, declire in Scene and call useGLTF @done(21-11-20 18:32)
-    ✔ Scene set group and meshes by Model @done(21-11-20 18:33)
-        ✔ remove Model, loading with useGLTF @done(21-11-20 18:33)
-    ✔ APIParser @done(21-11-22 17:20)
+    ☐ check supporting browser
+    ☐ asinc preloader
+    ☐ each frame going recalc column this is bad
+        ☐ how push data in column without update static data 
 
 ☐ Castomization
     ☐ change cursor
-    ✔ change preloader @done(21-11-24 21:05)
-        ✔ bottom line under the preloader bars @done(21-11-24 21:05)
-        ✔ down to up bars the preloader animations @done(21-11-24 21:05)
     ☐ dark/white themes
-    ✔ animation Mesh @done(21-11-24 21:05)
-    ☐ by hover mesh to color bound
-    ☐ popup window selected repo
-
+    ☐ paining bound column by selected
 
 ☐ MatBE
-    ☐ Flexeble horizontal scale
+    ☐ flexeble horizontal scale
+    ☐ bloom shading
     ☐ JARVIS as AI for user
         ☐ Shader
         ☐ SpeachKit
-
-☐ ASK
-    ☐ full size and each time * 0.5 to found out part or one time * 0.5 full size to found out part size and each time + part to found out center
