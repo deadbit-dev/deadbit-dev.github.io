@@ -1,10 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useFrame } from "@react-three/fiber";
 import { Text } from "@react-three/drei";
+import { useSnapshot } from "valtio";
+import invert from "invert-color";
+import { datGUI } from "./Screen";
+import { Box } from "./Box";
 
 
 export const Column = (props) => {
-    const column = useRef();
+    const ref = useRef();
+    const snap = useSnapshot(datGUI)
     const [boxes, setBoxes] = useState([]);
     const [active, setActive] = useState(false);
     const [columnWeight, setWeight] = useState(0);
@@ -22,37 +26,23 @@ export const Column = (props) => {
             const newSizeY = sizeBoxY * scaleY;
             posY += newSizeY;
             result.push(
-                <mesh 
+                <Box 
                     key={rep}
-                    name="Box"
-                    castShadow
                     geometry={props.geometry}
-                    materials={props.materials.Cube}
+                    materials={props.materials}
                     position={[0, posY - newSizeY * 0.5, 0]}
                     scale={[1, scaleY, 1]}
-                    onPointerOver={(event) => {
-                        event.stopPropagation();
-                        event.eventObject.material = props.materials.Hex;
-                    }}
-                    onPointerOut={(event) => {
-                        event.stopPropagation();
-                        event.eventObject.material = props.materials.Cube;
-                    }}
-                />
+                    weight={weight}
+                /> 
             );
         }
         setBoxes(result);
         setWeight(totalWeight);
     }, []);
 
-    useFrame((state) => {
-        const time = state.clock.getElapsedTime();
-        column.current.position.y += (Math.sin(time * 1.5) / 1000);
-    });   
-
     return (
         <group
-            ref={column}
+            ref={ref}
             name="Column"
             position={props.position} 
             onClick={(event) => {
@@ -67,7 +57,12 @@ export const Column = (props) => {
             {boxes}
             <Text
                 name="colText"
-                {...props.datGUI}
+                position={[0, 0.01, 0]}
+                rotation={[-1.57, 0, 0]}
+                anchorX="center"
+                anchorY="middle"
+                fontSize={snap.fontSize}
+                color={invert(snap.color)}
             >
                 {columnWeight}%
             </Text>

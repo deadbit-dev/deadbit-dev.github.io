@@ -4,7 +4,7 @@ import { Environment, OrbitControls } from "@react-three/drei";
 import { Graph } from "./Graph";
 
 
-export const Scene = (props) => {
+export const Scene = () => {
     return (
         <Canvas 
             shadows 
@@ -18,7 +18,7 @@ export const Scene = (props) => {
                 intensity={0.5}
             />
             <Suspense fallback={null}>
-                <Graph datGUI={props.datGUI} />
+                <Graph />
                 <Environment preset="city" />
             </Suspense>
             <OrbitControls 
