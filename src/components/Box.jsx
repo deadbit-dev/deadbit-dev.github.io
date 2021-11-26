@@ -46,7 +46,7 @@ export const Box = (props) => {
                         value.material = props.materials.Hex;
                         break;
                     case "boxText":
-                        value.color = invert(value.color);
+                        value.color = invert(snap.color);
                         break;
                     }
                 });
@@ -59,7 +59,7 @@ export const Box = (props) => {
                         value.material = props.materials.Cube;
                         break;
                     case "boxText":
-                        value.color = invert(value.color);
+                        value.color = snap.color;
                         break;
                     }
                 });

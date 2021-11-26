@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { Text } from "@react-three/drei";
 import { useSnapshot } from "valtio";
 import invert from "invert-color";
@@ -9,38 +9,33 @@ import { Box } from "./Box";
 export const Column = (props) => {
     const ref = useRef();
     const snap = useSnapshot(datGUI)
-    const [boxes, setBoxes] = useState([]);
     const [active, setActive] = useState(false);
-    const [columnWeight, setWeight] = useState(0);
-    
+
+    const boxes = new Array();
     const sizeBoxY = Math.abs(props.geometry.boundingBox.min.y - props.geometry.boundingBox.max.y);
     const startBoxY = sizeBoxY * 0.5;
     const distY = sizeBoxY * 0.5;
+    const dataArray = Object.entries(props.reps);
 
-    useEffect(() => {
-        const result = new Array();
-        let totalWeight = 0;
-        for (const [rep, weight, posY = posY ?? startBoxY] of Object.entries(props.reps)){
-            const scaleY = weight / 10;
-            totalWeight += weight;
-            const newSizeY = sizeBoxY * scaleY;
-            posY += newSizeY;
-            result.push(
-                <Box 
-                    key={rep}
-                    geometry={props.geometry}
-                    materials={props.materials}
-                    position={[0, posY - newSizeY * 0.5, 0]}
-                    scale={[1, scaleY, 1]}
-                    positionText={[0, newSizeY * 0.5 + 0.01, 0]}
-                    isActiveText={active}
-                    weight={weight}
-                /> 
-            );
-        }
-        setBoxes(result);
-        setWeight(totalWeight);
-    });
+    let columnWeight = 0;
+    for (const [rep, weight, posY = posY ?? startBoxY] of dataArray){
+        const scaleY = weight / 10;
+        columnWeight += weight;
+        const newSizeY = sizeBoxY * scaleY;
+        posY += newSizeY;
+        boxes.push(
+            <Box 
+                key={rep}
+                geometry={props.geometry}
+                materials={props.materials}
+                position={[0, posY - newSizeY * 0.5, 0]}
+                scale={[1, scaleY, 1]}
+                positionText={[0, newSizeY * 0.5 + 0.01, 0]}
+                isActiveText={active && (dataArray.length - 1)}
+                weight={weight}
+            /> 
+        );
+    }
 
     return (
         <group

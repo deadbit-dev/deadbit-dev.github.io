@@ -10,32 +10,31 @@ useGLTF.preload(scene);
 
 export const Graph = () => {
     const { nodes, materials } = useGLTF(scene);
-    const [columns, setColumns] = useState([]);
+    const [response, setResponse] = useState({});
 
     useEffect(() => {
         const response = API();
-        const dataArray = Object.entries(response);
-
-        const sizeX = Math.abs(nodes.Cube.geometry.boundingBox.min.x - nodes.Cube.geometry.boundingBox.max.x);
-        const distX = sizeX * 0.5;
-        const startX = 0 - (dataArray.length - 1) * (sizeX + distX) * 0.5;
-        const startY = nodes.Hex.geometry.boundingBox.max.y;
-
-        const result = new Array();
-        for (const [lang, reps, posX = posX ?? startX] of dataArray){
-            result.push(
-                <Column 
-                    key={lang}
-                    reps={reps}
-                    geometry={nodes.Cube.geometry}
-                    materials={materials}
-                    position={new Vector3(posX, startY, 0)}
-                />
-            );
-            posX += sizeX + distX;
-        }
-        setColumns(result);
+        setResponse(response);
     }, []);
+
+    const dataArray = Object.entries(response);
+    const sizeX = Math.abs(nodes.Cube.geometry.boundingBox.min.x - nodes.Cube.geometry.boundingBox.max.x);
+    const distX = sizeX * 0.5;
+    const startX = 0 - (dataArray.length - 1) * (sizeX + distX) * 0.5;
+    const startY = nodes.Hex.geometry.boundingBox.max.y;
+    const columns = new Array();
+    for (const [lang, reps, posX = posX ?? startX] of dataArray){
+        columns.push(
+            <Column 
+                key={lang}
+                reps={reps}
+                geometry={nodes.Cube.geometry}
+                materials={materials}
+                position={new Vector3(posX, startY, 0)}
+            />
+        );
+        posX += sizeX + distX;
+    }
 
     return (
         <group name="Graph">
