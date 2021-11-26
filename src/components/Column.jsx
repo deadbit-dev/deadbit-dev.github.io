@@ -18,7 +18,7 @@ export const Column = (props) => {
     const distY = sizeBoxY * 0.5;
 
     useEffect(() => {
-        let result = new Array();
+        const result = new Array();
         let totalWeight = 0;
         for (const [rep, weight, posY = posY ?? startBoxY] of Object.entries(props.reps)){
             const scaleY = weight / 10;
@@ -32,13 +32,15 @@ export const Column = (props) => {
                     materials={props.materials}
                     position={[0, posY - newSizeY * 0.5, 0]}
                     scale={[1, scaleY, 1]}
+                    positionText={[0, newSizeY * 0.5 + 0.01, 0]}
+                    isActiveText={active}
                     weight={weight}
                 /> 
             );
         }
         setBoxes(result);
         setWeight(totalWeight);
-    }, []);
+    });
 
     return (
         <group

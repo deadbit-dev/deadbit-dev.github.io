@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import { Text } from "@react-three/drei";
 import invert from "invert-color";
@@ -15,6 +15,24 @@ export const Box = (props) => {
         ref.current.position.y += (Math.sin(time * 1.5) / 1000);
     });
 
+    const showText = () => {
+        if(!props.isActiveText)
+            return null;
+        return (
+            <Text
+                name="boxText"
+                position={props.positionText}
+                rotation={[-1.57, 0, 0]}
+                anchorX="center"
+                anchorY="middle"
+                fontSize={snap.fontSize}
+                color={snap.color}
+            >
+                {props.weight}%
+            </Text>
+        );  
+    };
+
     return (
         <group
             ref={ref}
@@ -22,7 +40,6 @@ export const Box = (props) => {
             position={props.position}
             onPointerOver={(event) => {
                 event.stopPropagation();
-                // console.log(event);
                 event.eventObject.children.forEach((value) => { 
                     switch(value.name){
                     case "boxMesh": 
@@ -36,7 +53,6 @@ export const Box = (props) => {
             }}
             onPointerOut={(event) => {
                 event.stopPropagation();
-                // console.log(event);
                 event.eventObject.children.forEach((value) => { 
                     switch(value.name){
                     case "boxMesh": 
@@ -56,17 +72,7 @@ export const Box = (props) => {
                 material={props.materials.Cube}
                 scale={props.scale}
             />
-            <Text
-                name="boxText"
-                position={[0, 0.01, 0]}
-                rotation={[-1.57, 0, 0]}
-                anchorX="center"
-                anchorY="middle"
-                fontSize={snap.fontSize}
-                color={snap.color}
-            >
-                {props.weight}%
-            </Text>
+            {showText()}
         </group>
     );
 };

@@ -14,14 +14,14 @@ export const Graph = () => {
 
     useEffect(() => {
         const response = API();
+        const dataArray = Object.entries(response);
 
-        const result = new Array();
         const sizeX = Math.abs(nodes.Cube.geometry.boundingBox.min.x - nodes.Cube.geometry.boundingBox.max.x);
         const distX = sizeX * 0.5;
-        const dataArray = Object.entries(response);
         const startX = 0 - (dataArray.length - 1) * (sizeX + distX) * 0.5;
         const startY = nodes.Hex.geometry.boundingBox.max.y;
 
+        const result = new Array();
         for (const [lang, reps, posX = posX ?? startX] of dataArray){
             result.push(
                 <Column 
