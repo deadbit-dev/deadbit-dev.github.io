@@ -58,10 +58,16 @@
     ☐ optimize the bundle module #parts
     ☐ check supporting browser
     ☐ asinc preloader
+    ☐ color text while click column
+    ☐ refactor - calc yourself
+        ☐ graph
+            ☐ column
+                ☐ box
 
 ☐ Castomization
     ☐ change cursor
     ☐ dark/white themes
+        ☐ inversing color mesh for box by hex and color text by mesh
     ☐ paining bound column by selected
     ☐ rotation text with camera
 
