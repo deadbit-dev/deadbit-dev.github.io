@@ -27,10 +27,12 @@ export const Graph = () => {
         columns.push(
             <Column 
                 key={lang}
+                lang={lang}
                 reps={reps}
                 geometry={nodes.Cube.geometry}
                 materials={materials}
                 position={new Vector3(posX, startY, 0)}
+                
             />
         );
         posX += sizeX + distX;

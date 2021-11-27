@@ -1,5 +1,3 @@
-import { Vector2 } from "three";
-
 export const API = () => {
     return {
         'cpp': {

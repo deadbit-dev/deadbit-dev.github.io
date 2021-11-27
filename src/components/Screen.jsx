@@ -6,8 +6,8 @@ import { Scene } from './Scene';
 
 
 export const datGUI = proxy({
-    fontSize: 0.07,
-    color: "#000000"
+    fontSize: 0.06,
+    color: "#ffffff"
 });
 
 export const Screen = () => {
@@ -15,7 +15,10 @@ export const Screen = () => {
     return (
         <div id="screen">
             <Scene />
-            <DatGui data={snap} onUpdate={() => {}}>
+            <DatGui data={snap} onUpdate={(newData) => {
+                for(const [key, value] of Object.entries(newData))
+                    datGUI[key] = value;
+            }}>
                 <DatFolder title="text">
                     <DatNumber path="fontSize" min={0.0} max={1.0} step={0.01} />      
                     <DatColor path="color" />

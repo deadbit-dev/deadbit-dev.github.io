@@ -1,5 +1,4 @@
-import React, { useEffect, useRef } from "react";
-import { useFrame } from "@react-three/fiber";
+import React from "react";
 import { Text } from "@react-three/drei";
 import invert from "invert-color";
 import { useSnapshot } from "valtio";
@@ -7,26 +6,20 @@ import { datGUI } from "./Screen";
 
 
 export const Box = (props) => {
-    const ref = useRef()
     const snap = useSnapshot(datGUI);
 
-    useFrame((state) => {
-        const time = state.clock.getElapsedTime();
-        ref.current.position.y += (Math.sin(time * 1.5) / 1000);
-    });
-
     const showText = () => {
-        if(!props.isActiveText)
+        if(!props.isActive)
             return null;
         return (
             <Text
-                name="boxText"
+                name="BoxWeightText"
                 position={props.positionText}
                 rotation={[-1.57, 0, 0]}
                 anchorX="center"
                 anchorY="middle"
                 fontSize={snap.fontSize}
-                color={snap.color}
+                color={invert(snap.color)}
             >
                 {props.weight}%
             </Text>
@@ -35,38 +28,41 @@ export const Box = (props) => {
 
     return (
         <group
-            ref={ref}
             name="Box"
             position={props.position}
             onPointerOver={(event) => {
+                if(!props.isActive)
+                    return null;
                 event.stopPropagation();
                 event.eventObject.children.forEach((value) => { 
                     switch(value.name){
-                    case "boxMesh": 
+                    case "BoxMesh": 
                         value.material = props.materials.Hex;
                         break;
-                    case "boxText":
-                        value.color = invert(snap.color);
+                    case "BoxWeightText":
+                        value.color = snap.color;
                         break;
                     }
                 });
             }}
             onPointerOut={(event) => {
+                if(!props.isActive)
+                    return null;
                 event.stopPropagation();
                 event.eventObject.children.forEach((value) => { 
                     switch(value.name){
-                    case "boxMesh": 
+                    case "BoxMesh": 
                         value.material = props.materials.Cube;
                         break;
-                    case "boxText":
-                        value.color = snap.color;
+                    case "BoxWeightText":
+                        value.color = invert(snap.color);
                         break;
                     }
                 });
             }}
         >
             <mesh
-                name="boxMesh"
+                name="BoxMesh"
                 castShadow
                 geometry={props.geometry}
                 material={props.materials.Cube}
