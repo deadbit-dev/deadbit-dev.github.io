@@ -1,4 +1,26 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,user-scalable=no"/><title>deadbit-dev</title><script defer="defer" src="main.bundle.js"></script></head><body><div id="loading-space"><div class="wrapper"><span class="circle circle-1"></span> <span class="circle circle-2"></span> <span class="circle circle-3"></span> <span class="circle circle-4"></span> <span class="circle circle-5"></span> <span class="circle circle-6"></span> <span class="circle circle-7"></span> <span class="circle circle-8"></span></div></div><div id="root"></div><script>const loader = (app, loader) => {
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <title>deadbit-dev</title>
+  <script defer src="main.bundle.js"></script></head>
+  <body>
+    <div id="loading-space">
+      <div class="wrapper">
+        <span class="circle circle-1"></span>
+        <span class="circle circle-2"></span>
+        <span class="circle circle-3"></span>
+        <span class="circle circle-4"></span>
+        <span class="circle circle-5"></span>
+        <span class="circle circle-6"></span>
+        <span class="circle circle-7"></span>
+        <span class="circle circle-8"></span>
+      </div> 
+    </div>
+    <div id="root"></div>
+  <script>
+    const loader = (app, loader) => {
       // loading
       app.classList.add("blur-effect");
       app.classList.add("blur-on");
@@ -13,4 +35,7 @@
     loader(
       document.getElementById('root'),
       document.getElementById('loading-space')
-    );</script></body></html>
+    );
+  </script>
+  </body>
+</html>
