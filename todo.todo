@@ -35,14 +35,11 @@
                 ✔ select -> part group @done(21-11-24 20:16)
             ☐ GUI
                 ✔ add DatGUI @done(21-11-25 19:30)
-                ☐ text
-                    ✔ size @done(21-11-25 19:41)
-                    ✔ color @done(21-11-25 19:43)
-                    ☐ font
                 ☐ material
                     ☐ color
-                ✔ total weight for column @done(21-11-25 19:48)
-                ☐ weigh for box
+                ☐ text
+                    ✔ color @done(21-11-28 01:02)
+                    ☐ color by material color
  
 ☐ FIXME
     ✔ hex mesh center to top @done(21-11-21 01:39)
@@ -51,22 +48,19 @@
     ✔ hover mesh, select both, raycast bug @done(21-11-24 21:05)
     ✔ each frame going recalc column this is bad @done(21-11-26 18:25)
         ✔ how push data in column without update static data @done(21-11-26 18:25)
+    ✔ color text while click column @done(21-11-28 01:00)
     ☐ off rotate and zoom
     ☐ optimize the bundle module #parts
     ☐ check supporting browser
     ☐ asinc preloader
     ☐ position column with time
-    ☐ color text while click column
     ☐ refactor - calc yourself
-        ☐ graph
-            ☐ column
-                ☐ box
 
 ☐ Castomization
     ☐ change cursor
     ☐ dark/white themes
         ☐ inversing color mesh for box by hex and color text by mesh
-    ☐ paining bound column by selected
+    ☐ outline column by selected
     ☐ rotation text with camera
 
 ☐ MatBE
