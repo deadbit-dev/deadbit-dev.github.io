@@ -41,9 +41,7 @@ export const Column = (props) => {
 
     useFrame((state) => {
         const time = state.clock.getElapsedTime();
-        const cnst = (Math.sin(time * 1.5) / 1000);
-        //console.log(cnst);
-        ref.current.position.y += cnst;
+        ref.current.position.y += Math.sin(time * 1.5) / 1000;
     });
     
     return (
@@ -57,7 +55,7 @@ export const Column = (props) => {
                 rotation={[-1.57, 0, 0]}
                 anchorX="center"
                 anchorY="middle"
-                fontSize={snap.fontSize}
+                fontSize={0.07}
                 color={snap.color}
             >
                 {columnWeight}%
@@ -71,13 +69,11 @@ export const Column = (props) => {
                         return null;
                     setActive(!active);
                     event.eventObject.children.forEach((value, index) => {
-                        if(value.name == "Box" || value.name == "LangText") {
-                            value.position.y += (active ? -distY : distY) * index;
-                            value.children.forEach((value) => {
-                                if(value.name == "BoxMesh")
-                                    value.material = props.materials.Cube;
-                            });
-                        }
+                        value.position.y += (active ? -distY : distY) * index;
+                        value.children.forEach((value) => {
+                            if(value.name == "BoxMesh")
+                                value.material = props.materials.Cube;
+                        });
                     });  
                 }}
                 onPointerOver={(event) => {
@@ -97,11 +93,10 @@ export const Column = (props) => {
                         return null;
                     event.stopPropagation();
                     event.eventObject.children.forEach((value) => { 
-                        if(value.name == "Box" || value.name == "LangText")
-                            value.children.forEach((value) => {
-                                if(value.name == "BoxMesh")
-                                    value.material = props.materials.Cube;
-                            });
+                        value.children.forEach((value) => {
+                            if(value.name == "BoxMesh")
+                                value.material = props.materials.Cube;
+                        });
                     });
                 }}
             >
@@ -111,7 +106,7 @@ export const Column = (props) => {
                     position={[0, posY+0.05, 0]}
                     anchorX="center"
                     anchorY="middle"
-                    fontSize={snap.fontSize}
+                    fontSize={0.06}
                     color={invert(snap.color)}
                 > 
                     {props.lang}

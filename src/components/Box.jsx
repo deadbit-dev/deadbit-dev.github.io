@@ -18,7 +18,7 @@ export const Box = (props) => {
                 rotation={[-1.57, 0, 0]}
                 anchorX="center"
                 anchorY="middle"
-                fontSize={snap.fontSize}
+                fontSize={0.06}
                 color={invert(snap.color)}
             >
                 {props.weight}%
