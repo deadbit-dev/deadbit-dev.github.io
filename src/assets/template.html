@@ -21,16 +21,13 @@
     <div id="root"></div>
   <script>
     const loader = (app, loader) => {
-      // loading
       app.classList.add("blur-effect");
       app.classList.add("blur-on");
       window.onload = () => {
-        setTimeout(() => {
-          loader.style.display = 'none';
-          app.classList.add("blur-off");
-          setTimeout(app.classList.remove('blur-on'), 1000);
-        }, 1500);
-      }
+        loader.style.display = 'none';
+        app.classList.add("blur-off");
+        setTimeout(app.classList.remove('blur-on'), 1000);
+      };
     };
     loader(
       document.getElementById('root'),
