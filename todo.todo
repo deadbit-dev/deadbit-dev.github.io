@@ -36,11 +36,8 @@
             ☐ GUI
                 ✔ add DatGUI @done(21-11-25 19:30)
                 ☐ text
-                    ✔ anchors @done(21-11-25 19:41)
                     ✔ size @done(21-11-25 19:41)
                     ✔ color @done(21-11-25 19:43)
-                    ✔ position @done(21-11-25 19:42)
-                    ✔ rotation @done(21-11-25 19:42)
                     ☐ font
                 ☐ material
                     ☐ color
@@ -58,6 +55,7 @@
     ☐ optimize the bundle module #parts
     ☐ check supporting browser
     ☐ asinc preloader
+    ☐ position column with time
     ☐ color text while click column
     ☐ refactor - calc yourself
         ☐ graph
