@@ -9,6 +9,7 @@
     ☐ move preloader system from template
     ☐ SCREEN
         ☐ API
+        ✔ Settings @done(21-11-28 03:13)
         ☐ RENDER SYSTEM
             ✔ @react-three/fiber @done(21-11-17 04:53)
             ✔ @react-three/dri @done(21-11-17 04:54)
@@ -21,18 +22,23 @@
                 ✔ Controls @done(21-11-17 04:56)
                     ✔ lock controls @done(21-11-17 22:11)
                 ✔ Environment @done(21-11-17 22:11)
-            ✔ HEX PLATFORM @done(21-11-20 16:38)
-                ✔ mesh @done(21-11-16 16:04)
-                ✔ materiar/shader @done(21-11-18 14:49)
-            ✔ Column @done(21-11-25 19:45)
-                ✔ positioning @done(21-11-25 19:45)
-                ✔ selecting @done(21-11-25 19:45)
-            ✔ Box @done(21-11-20 16:38)
-                ✔ material/shader @done(21-11-18 14:49)
-                ✔ scaling by weight @done(21-11-19 22:14)
-                ✔ select mesh @done(21-11-20 16:38)
-                ✔ change material for selected mesh @done(21-11-20 19:21)
-                ✔ select -> part group @done(21-11-24 20:16)
+            ✔ Graph @done(21-11-28 03:10)
+                ✔ HEX PLATFORM @done(21-11-20 16:38)
+                    ✔ mesh @done(21-11-16 16:04)
+                    ✔ materiar/shader @done(21-11-18 14:49)
+                ✔ Column @done(21-11-25 19:45)
+                    ✔ positioning @done(21-11-25 19:45)
+                    ✔ selecting @done(21-11-25 19:45)
+                    ✔ change material all Box for selected Column @done(21-11-28 03:12)
+                    ✔ text weight @done(21-11-28 03:12)
+                    ✔ text lang @done(21-11-28 03:13)
+                ✔ Box @done(21-11-20 16:38)
+                    ✔ mesh @done(21-11-28 03:11)
+                    ✔ material/shader @done(21-11-18 14:49)
+                    ✔ scaling by weight @done(21-11-19 22:14)
+                    ✔ select mesh @done(21-11-20 16:38)
+                    ✔ change material for selected mesh @done(21-11-20 19:21)
+                    ✔ text weight @done(21-11-28 03:13)
             ☐ GUI
                 ✔ add DatGUI @done(21-11-25 19:30)
                 ☐ material
@@ -49,17 +55,18 @@
     ✔ each frame going recalc column this is bad @done(21-11-26 18:25)
         ✔ how push data in column without update static data @done(21-11-26 18:25)
     ✔ color text while click column @done(21-11-28 01:00)
+    ✔ refactor - calc yourself @done(21-11-28 03:09)
     ☐ off rotate and zoom
     ☐ optimize the bundle module #parts
     ☐ check supporting browser
     ☐ asinc preloader
-    ☐ position column with time
-    ☐ refactor - calc yourself
+    ☐ suspense move Screen && Preloader
+    ☐ animation column with time
+    ☐ Settings js -> json
+    
 
 ☐ Castomization
     ☐ change cursor
-    ☐ dark/white themes
-        ☐ inversing color mesh for box by hex and color text by mesh
     ☐ outline column by selected
     ☐ rotation text with camera
 
