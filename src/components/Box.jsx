@@ -1,30 +1,26 @@
 import React from "react";
 import { Text } from "@react-three/drei";
-import invert from "invert-color";
 import { useSnapshot } from "valtio";
-import { datGUI } from "./Screen";
+import { datGUI } from "../utils/Settings";
+import invert from "invert-color";
 
 
 export const Box = (props) => {
     const snap = useSnapshot(datGUI);
 
-    const showText = () => {
-        if(!props.isActive)
-            return null;
-        return (
-            <Text
-                name="BoxWeightText"
-                position={props.positionText}
-                rotation={[-1.57, 0, 0]}
-                anchorX="center"
-                anchorY="middle"
-                fontSize={0.06}
-                color={invert(snap.color)}
-            >
-                {props.weight}%
-            </Text>
-        );  
-    };
+    const weight = (
+        <Text
+            name="BoxWeightText"
+            position={[0, props.sizeY * 0.5 + 0.01, 0]}
+            rotation={[-1.57, 0, 0]}
+            anchorX="center"
+            anchorY="middle"
+            fontSize={0.06}
+            color={invert(snap.color)}
+        >
+            {props.weight}%
+        </Text>
+    );  
 
     return (
         <group
@@ -68,7 +64,7 @@ export const Box = (props) => {
                 material={props.materials.Cube}
                 scale={props.scale}
             />
-            {showText()}
+            {props.isActive ? weight : null}
         </group>
     );
 };

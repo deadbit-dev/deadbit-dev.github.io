@@ -18,10 +18,14 @@ export const Graph = () => {
     }, []);
 
     const dataArray = Object.entries(response);
+
     const sizeX = Math.abs(nodes.Cube.geometry.boundingBox.min.x - nodes.Cube.geometry.boundingBox.max.x);
+    const sizeY = Math.abs(nodes.Cube.geometry.boundingBox.min.y - nodes.Cube.geometry.boundingBox.max.y);
     const distX = sizeX * 0.5;
+    const distY = sizeY * 0.5;
     const startX = 0 - (dataArray.length - 1) * (sizeX + distX) * 0.5;
     const startY = nodes.Hex.geometry.boundingBox.max.y;
+
     const columns = new Array();
     for (const [lang, reps, posX = posX ?? startX] of dataArray){
         columns.push(
@@ -32,7 +36,8 @@ export const Graph = () => {
                 geometry={nodes.Cube.geometry}
                 materials={materials}
                 position={new Vector3(posX, startY, 0)}
-                
+                sizeY={sizeY}
+                distY={distY}
             />
         );
         posX += sizeX + distX;
