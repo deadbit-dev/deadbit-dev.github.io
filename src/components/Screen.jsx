@@ -1,8 +1,8 @@
 import React from 'react';
 import DatGui, { DatColor } from 'react-dat-gui';
 import { useSnapshot } from 'valtio';
-import { Scene } from './Scene';
 import { datGUI } from '../utils/Settings';
+import { Scene } from './Scene';
 
 
 export const Screen = () => {

@@ -1,22 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { Text } from "@react-three/drei";
 import { useSnapshot } from "valtio";
 import { datGUI } from "../utils/Settings";
-import invert from "invert-color";
 
 
 export const Box = (props) => {
     const snap = useSnapshot(datGUI);
+    const [isClick, click] = useState(false);
+    const [isHover, hover] = useState(false);
 
-    const weight = (
+
+    const BoxWeightText = (
         <Text
             name="BoxWeightText"
-            position={[0, props.sizeY * 0.5 + 0.01, 0]}
-            rotation={[-1.57, 0, 0]}
             anchorX="center"
             anchorY="middle"
             fontSize={0.06}
-            color={invert(snap.color)}
+            fillOpacity={0}
+            strokeWidth={'1%'}
+            strokeColor={snap.color}
+            position={[0, 0, props.size.z * 0.5 + 0.01]}
         >
             {props.weight}%
         </Text>
@@ -30,30 +33,20 @@ export const Box = (props) => {
                 if(!props.isActive)
                     return null;
                 event.stopPropagation();
+                hover(true);
                 event.eventObject.children.forEach((value) => { 
-                    switch(value.name){
-                    case "BoxMesh": 
+                    if(value.name == "BoxMesh")
                         value.material = props.materials.Hex;
-                        break;
-                    case "BoxWeightText":
-                        value.color = snap.color;
-                        break;
-                    }
                 });
             }}
             onPointerOut={(event) => {
                 if(!props.isActive)
                     return null;
                 event.stopPropagation();
+                hover(false);
                 event.eventObject.children.forEach((value) => { 
-                    switch(value.name){
-                    case "BoxMesh": 
+                    if(value.name == "BoxMesh")
                         value.material = props.materials.Cube;
-                        break;
-                    case "BoxWeightText":
-                        value.color = invert(snap.color);
-                        break;
-                    }
                 });
             }}
         >
@@ -64,7 +57,7 @@ export const Box = (props) => {
                 material={props.materials.Cube}
                 scale={props.scale}
             />
-            {props.isActive ? weight : null}
+            {props.isActive && isHover ? BoxWeightText : null}
         </group>
     );
 };

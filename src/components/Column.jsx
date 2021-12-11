@@ -4,23 +4,24 @@ import { Text } from "@react-three/drei";
 import { useSnapshot } from "valtio";
 import { Box } from "./Box";
 import { datGUI } from "../utils/Settings";
-import invert from "invert-color";
 
 
 export const Column = (props) => {
     const ref = useRef();
     const snap = useSnapshot(datGUI)
-    const [isActive, setActive] = useState(false);
+    const [isClick, click] = useState(false);
+    const [isHover, hover] = useState(false);
 
     const dataArray = Object.entries(props.reps);
+    const isOne = !(dataArray.length - 1);
     const boxes = new Array();
 
     let columnWeight = 0;
-    let posY = props.sizeY * 0.5;
+    let posY = props.size.y * 0.5;
     for (const [rep, weight] of dataArray){
         const scaleY = weight / 10;
         columnWeight += weight;
-        const sizeY = props.sizeY * scaleY;
+        const sizeY = props.size.y * scaleY;
         posY += sizeY;
         boxes.push(
             <Box 
@@ -29,8 +30,8 @@ export const Column = (props) => {
                 materials={props.materials}
                 position={[0, posY - sizeY * 0.5, 0]}
                 scale={[1, scaleY, 1]}
-                sizeY={props.sizeY}
-                isActive={isActive && (dataArray.length - 1)}
+                size={props.size}
+                isActive={isClick}
                 weight={weight}
             /> 
         );
@@ -38,8 +39,24 @@ export const Column = (props) => {
 
     useFrame((state) => {
         const time = state.clock.getElapsedTime();
-        ref.current.position.y += Math.sin(time) / 1000;
+        ref.current.position.y += Math.sin(time) * 0.001;
     });
+
+    const ColumnWeightText = (
+        <Text
+            name="BoxWeightText"
+            anchorX="center"
+            anchorY="middle"
+            fontSize={0.06}
+            fillOpacity={0}
+            strokeWidth={'1%'}
+            strokeColor={snap.color}
+            // FIXME: easyer to calc position
+            position={[0, props.size.y * 0.5 + posY * 0.5, props.size.z * 0.5 + 0.01]}
+        >
+            {columnWeight}%
+        </Text>
+    );  
     
     return (
         <group
@@ -47,25 +64,28 @@ export const Column = (props) => {
                 position={props.position} 
         >
             <Text
-                name="WeightColumnText"
+                name="LangText"
+                textAlign="center"
                 anchorX="center"
                 anchorY="middle"
+                fontSize={0.07}
+                fillOpacity={0}
+                strokeWidth={'1%'}
+                strokeColor={snap.color}
                 position={[0, 0.01, 0]}
                 rotation={[-1.57, 0, 0]}
-                fontSize={0.07}
-                color={snap.color}
             >
-                {columnWeight}%
+                {props.lang}
             </Text>
             <group
                 ref={ref}
                 onClick={(event) => {
                     event.stopPropagation();
-                    if(event.eventObject.children.length <= 2)
+                    if(isOne)
                         return null;
-                    setActive(!isActive);
+                    click(!isClick);
                     event.eventObject.children.forEach((value, index) => {
-                        value.position.y += (active ? -props.distY : props.distY) * index;
+                        value.position.y += (isClick ? -props.distY : props.distY) * index;
                         value.children.forEach((value) => {
                             if(value.name == "BoxMesh")
                                 value.material = props.materials.Cube;
@@ -73,9 +93,10 @@ export const Column = (props) => {
                     });  
                 }}
                 onPointerOver={(event) => {
-                    if(isActive)
-                        return null;
                     event.stopPropagation();
+                    hover(true);
+                    if(isClick)
+                        return null;
                     event.eventObject.children.forEach((value) => { 
                         if(value.name == "Box")
                             value.children.forEach((value) => {
@@ -85,9 +106,10 @@ export const Column = (props) => {
                     });
                 }}
                 onPointerOut={(event) => {
-                    if(isActive)
-                        return null;
                     event.stopPropagation();
+                    hover(false);
+                    if(isClick)
+                        return null;
                     event.eventObject.children.forEach((value) => { 
                         value.children.forEach((value) => {
                             if(value.name == "BoxMesh")
@@ -97,16 +119,7 @@ export const Column = (props) => {
                 }}
             >
                 {boxes}
-                <Text
-                    name="LangText"
-                    position={[0, posY+0.05, 0]}
-                    anchorX="center"
-                    anchorY="middle"
-                    fontSize={0.06}
-                    color={invert(snap.color)}
-                > 
-                    {props.lang}
-                </Text>
+                {!isClick && isHover ? ColumnWeightText : null}
             </group>
         </group>
     );

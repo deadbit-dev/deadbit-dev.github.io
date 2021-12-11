@@ -3,7 +3,7 @@ import { useGLTF } from "@react-three/drei";
 import { Vector3 } from "three";
 import { Column } from "./Column";
 import { API } from "../utils/API";
-import scene from "../assets/scene.glb";
+import scene from "../assets/models/scene.glb";
 
 
 useGLTF.preload(scene);
@@ -21,6 +21,7 @@ export const Graph = () => {
 
     const sizeX = Math.abs(nodes.Cube.geometry.boundingBox.min.x - nodes.Cube.geometry.boundingBox.max.x);
     const sizeY = Math.abs(nodes.Cube.geometry.boundingBox.min.y - nodes.Cube.geometry.boundingBox.max.y);
+    const sizeZ = Math.abs(nodes.Cube.geometry.boundingBox.min.z - nodes.Cube.geometry.boundingBox.max.z);
     const distX = sizeX * 0.5;
     const distY = sizeY * 0.5;
     const startX = 0 - (dataArray.length - 1) * (sizeX + distX) * 0.5;
@@ -36,7 +37,7 @@ export const Graph = () => {
                 geometry={nodes.Cube.geometry}
                 materials={materials}
                 position={new Vector3(posX, startY, 0)}
-                sizeY={sizeY}
+                size={new Vector3(sizeX, sizeY, sizeZ)}
                 distY={distY}
             />
         );
