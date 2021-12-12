@@ -40,7 +40,7 @@ APP:
                     ✔ change material for selected mesh @done(21-11-20 19:21)
                     ✔ text weight @done(21-11-28 03:13)
             ☐ GUI
-                ☐ toggle button for change color theme dark/white
+                ☐ toggle button for switch color theme dark/white
                     ☐ color
                         ☐ material
                         ☐ text
@@ -55,6 +55,8 @@ FIXME:
     ✔ color text while click column @done(21-11-28 01:00)
     ✔ refactor - calc yourself @done(21-11-28 03:09)
     ✔ change position text on box to front view @done(21-12-09 19:46)
+    ✔ weight text on column or box while select remove other behaviors @done(21-12-10 04:59)
+    ✔ refactor all system by box behaviors component @done(21-12-12 04:43)
     ☐ off rotate and zoom
     ☐ optimize the bundle module (partition)
     ☐ check supporting browser
@@ -62,20 +64,22 @@ FIXME:
         ☐ move preloader system from template to App (react)
         ☐ asinc preloader
         ☐ suspense move Screen && Preloader
-    ☐ smooth animation for box by click column
-    ☐ animation column with time
-    ✔ weight text on column or box while select remove other behaviors @done(21-12-10 04:59)
     ☐ without forEach maybe better use key
+    ☐ add state for column (push boxes only by event and switch state column/boxes)
     
 TODO:
+    ✔ setup shader loader @done(21-12-12 04:36)
     ☐ change cursor
-    ☐ outline column by selected
-    ☐ smooth switch color material box by hold
+    ☐ shader outline for column by select
+    ☐ shader for box by long hold down, smooth animation switch color material box
     ☐ hold columnm to show info and longer hold what be click
 
 Maybe:
-    ☐ flexeble horizontal scale
-    ☐ bloom shading
     ☐ JARVIS as AI for user
         ☐ Shader
         ☐ SpeachKit
+    ☐ bloom shading
+    ☐ flexeble horizontal scale
+    ☐ rotate text by 9o digree
+    ☐ by select show text 
+ 
