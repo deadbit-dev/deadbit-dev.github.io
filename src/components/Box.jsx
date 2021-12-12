@@ -6,11 +6,9 @@ import { datGUI } from "../utils/Settings";
 
 export const Box = (props) => {
     const snap = useSnapshot(datGUI);
-    const [isClick, click] = useState(false);
     const [isHover, hover] = useState(false);
 
-
-    const BoxWeightText = (
+    const WeightText = (
         <Text
             name="BoxWeightText"
             anchorX="center"
@@ -23,33 +21,31 @@ export const Box = (props) => {
         >
             {props.weight}%
         </Text>
-    );  
-
+    );      
+    
     return (
         <group
             name="Box"
             position={props.position}
+            onClick={props.onClick}
             onPointerOver={(event) => {
-                if(!props.isActive)
-                    return null;
                 event.stopPropagation();
                 hover(true);
-                event.eventObject.children.forEach((value) => { 
+                event.eventObject.children.forEach((value) => {
                     if(value.name == "BoxMesh")
                         value.material = props.materials.Hex;
                 });
             }}
             onPointerOut={(event) => {
-                if(!props.isActive)
-                    return null;
                 event.stopPropagation();
                 hover(false);
-                event.eventObject.children.forEach((value) => { 
+                event.eventObject.children.forEach((value) => {
                     if(value.name == "BoxMesh")
                         value.material = props.materials.Cube;
                 });
             }}
-        >
+ 
+       >
             <mesh
                 name="BoxMesh"
                 castShadow
@@ -57,7 +53,7 @@ export const Box = (props) => {
                 material={props.materials.Cube}
                 scale={props.scale}
             />
-            {props.isActive && isHover ? BoxWeightText : null}
+            {isHover ? WeightText : null}
         </group>
     );
 };

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useGLTF } from "@react-three/drei";
-import { Vector3 } from "three";
+import { Vector2, Vector3 } from "three";
 import { Column } from "./Column";
 import { API } from "../utils/API";
 import scene from "../assets/models/scene.glb";
@@ -18,17 +18,22 @@ export const Graph = () => {
     }, []);
 
     const dataArray = Object.entries(response);
-
-    const sizeX = Math.abs(nodes.Cube.geometry.boundingBox.min.x - nodes.Cube.geometry.boundingBox.max.x);
-    const sizeY = Math.abs(nodes.Cube.geometry.boundingBox.min.y - nodes.Cube.geometry.boundingBox.max.y);
-    const sizeZ = Math.abs(nodes.Cube.geometry.boundingBox.min.z - nodes.Cube.geometry.boundingBox.max.z);
-    const distX = sizeX * 0.5;
-    const distY = sizeY * 0.5;
-    const startX = 0 - (dataArray.length - 1) * (sizeX + distX) * 0.5;
-    const startY = nodes.Hex.geometry.boundingBox.max.y;
+    const size = new Vector3(
+        Math.abs(nodes.Cube.geometry.boundingBox.min.x - nodes.Cube.geometry.boundingBox.max.x),
+        Math.abs(nodes.Cube.geometry.boundingBox.min.y - nodes.Cube.geometry.boundingBox.max.y),
+        Math.abs(nodes.Cube.geometry.boundingBox.min.z - nodes.Cube.geometry.boundingBox.max.z)
+    );
+    const dist = new Vector2(
+        size.x * 0.5,
+        size.y * 0.5
+    );
+    const start = new Vector2(
+        0 - (dataArray.length - 1) * (size.x + dist.x) * 0.5,
+        nodes.Hex.geometry.boundingBox.max.y
+    );
 
     const columns = new Array();
-    for (const [lang, reps, posX = posX ?? startX] of dataArray){
+    for (const [lang, reps, posX = posX ?? start.x] of dataArray){
         columns.push(
             <Column 
                 key={lang}
@@ -36,12 +41,12 @@ export const Graph = () => {
                 reps={reps}
                 geometry={nodes.Cube.geometry}
                 materials={materials}
-                position={new Vector3(posX, startY, 0)}
-                size={new Vector3(sizeX, sizeY, sizeZ)}
-                distY={distY}
+                position={new Vector3(posX, start.y, 0)}
+                size={size}
+                distY={dist.y}
             />
         );
-        posX += sizeX + distX;
+        posX += size.x + dist.x;
     }
 
     return (
