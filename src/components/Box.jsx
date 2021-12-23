@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text } from "@react-three/drei";
+import { Text, useCursor } from "@react-three/drei";
 import { useSnapshot } from "valtio";
 import { preset } from "../utils/preset";
 import fonts from "../utils/fonts";
@@ -23,6 +23,8 @@ export default function Box(props) {
         </Text>
     );      
     
+    useCursor(isHover, "pointer", "grab");
+
     return (
         <group
             name="Box"
@@ -31,12 +33,10 @@ export default function Box(props) {
             onPointerOver={(event) => {
                 event.stopPropagation();
                 hover(true);
-                document.body.style.cursor = 'pointer';
             }}
             onPointerOut={(event) => {
                 event.stopPropagation();
                 hover(false);
-                document.body.style.cursor = 'grab';
             }}
  
        >

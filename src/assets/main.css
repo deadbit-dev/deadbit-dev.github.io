@@ -6,10 +6,6 @@ body {
   cursor: grab;
 }
 
-body:active {
-  cursor: grabbing;
-}
-
 #screen {
   width: 100vw;
   height: 100vh;

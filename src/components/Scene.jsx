@@ -10,6 +10,7 @@ export default function Scene() {
             shadows 
             dpr={Math.max(window.devicePixelRatio, 2)} 
             camera={{ position: [0, 2.5, 3.5], fov: 50 }}
+            frameloop="demand"
         >
             <spotLight
                 castShadow
