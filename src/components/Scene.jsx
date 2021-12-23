@@ -1,26 +1,23 @@
-import React, { Suspense } from "react";
+import React from "react";
 import { Canvas } from "@react-three/fiber";
 import { Environment, OrbitControls } from "@react-three/drei";
-import { Graph } from "./Graph";
+import Graph from "./Graph";
 
 
-export const Scene = () => {
+export default function Scene() {
     return (
-        <Canvas 
+        <Canvas
             shadows 
             dpr={Math.max(window.devicePixelRatio, 2)} 
             camera={{ position: [0, 2.5, 3.5], fov: 50 }}
         >
-            <ambientLight intensity={1.0} />
-            <directionalLight
+            <spotLight
                 castShadow
                 position={[-5, 10, -5]}
-                intensity={0.5}
+                angle={0.5}
             />
-            <Suspense fallback={null}>
-                <Graph />
-                <Environment preset="city" />
-            </Suspense>
+            <Graph />
+            <Environment preset="city" />
             <OrbitControls 
                 minPolarAngle={0}
                 maxPolarAngle={Math.PI / 2}
@@ -29,4 +26,4 @@ export const Scene = () => {
             />
         </Canvas>
     );
-};
+}

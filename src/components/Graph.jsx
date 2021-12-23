@@ -1,15 +1,23 @@
 import React, { useEffect, useState } from "react";
+import { Vector2, Vector3, Color, MeshStandardMaterial } from "three";
 import { useGLTF } from "@react-three/drei";
-import { Vector2, Vector3 } from "three";
-import { Column } from "./Column";
-import { API } from "../utils/API";
+import { useSnapshot } from "valtio";
+import { preset } from "../utils/preset";
+import API from "../utils/API";
+import Column from "./Column";
 import scene from "../assets/models/scene.glb";
 
 
 useGLTF.preload(scene);
 
-export const Graph = () => {
-    const { nodes, materials } = useGLTF(scene);
+const materials = {
+    dark: new MeshStandardMaterial({ color: new Color('black') }),
+    white: new MeshStandardMaterial({ color: new Color('white') }),
+}
+
+export default function Graph() {
+    const snapPreset = useSnapshot(preset);
+    const { nodes } = useGLTF(scene);
     const [response, setResponse] = useState({});
 
     useEffect(() => {
@@ -55,10 +63,10 @@ export const Graph = () => {
                 name="Hex" 
                 receiveShadow
                 geometry={nodes.Hex.geometry}
-                material={materials.Hex}
+                material={snapPreset.darkTheme ? materials.dark : materials.white}
                 position={[0, 0, 0]}
             />
             {columns}
         </group>
     );
-};
+}

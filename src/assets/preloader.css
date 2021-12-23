@@ -1,52 +1,10 @@
-html, 
-body {
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-
-#screen {
-  width: 100vw;
-  height: 100vh;
-}
-
-#loading-space {
-  background-color: white;
-  overflow: hidden;
-  position: fixed;
-  left: 0;
-  top: 0;
-  right:0;
-  bottom:0;
-  z-index: 100000;
-}
-
-.blur-effect {
-  transition: -webkit-filter 1000ms, -moz-filter 1000ms, -ms-filter 1000ms, -o-filter 1000ms, filter 1000ms;
-}
-
-.blur-on { 
-  -webkit-filter: blur(50px);
-  -moz-filter: blur(50px);
-  -ms-filter: blur(50px);
-  -o-filter: blur(50px);
-  filter: blur(50px);
-}
-
-.blur-off { 
-  -webkit-filter: none;
-  -moz-filter: none;
-  -ms-filter: none;
-  -o-filter: none;
-  filter: none;
-}
-
 .wrapper{
   position:absolute;
   top:50%;
   left:50%;
   transform:translate(-50%, -50%); 
 }
+
 .circle{
   display: inline-block;
   width: 15px;
@@ -57,6 +15,7 @@ body {
   transform-origin: bottom center;
   position: relative;
 }
+
 @keyframes loading{
   0%{
     transform: translateY(0px);
@@ -71,6 +30,7 @@ body {
     background-color: #000000;
   }
 }
+
 .circle-1{
   animation-delay: 0.1s;
 }

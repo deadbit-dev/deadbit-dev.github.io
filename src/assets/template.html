@@ -1,38 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no" />
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body>
-    <div id="loading-space">
-      <div class="wrapper">
-        <span class="circle circle-1"></span>
-        <span class="circle circle-2"></span>
-        <span class="circle circle-3"></span>
-        <span class="circle circle-4"></span>
-        <span class="circle circle-5"></span>
-        <span class="circle circle-6"></span>
-        <span class="circle circle-7"></span>
-        <span class="circle circle-8"></span>
-      </div> 
-    </div>
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
     <div id="root"></div>
-  <script>
-    const loader = (app, loader) => {
-      app.classList.add("blur-effect");
-      app.classList.add("blur-on");
-      window.onload = () => {
-        loader.style.display = 'none';
-        app.classList.add("blur-off");
-        setTimeout(app.classList.remove('blur-on'), 1000);
-      };
-    };
-    loader(
-      document.getElementById('root'),
-      document.getElementById('loading-space')
-    );
-  </script>
   </body>
 </html>

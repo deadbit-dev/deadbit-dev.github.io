@@ -1,21 +1,18 @@
-import React from 'react';
-import DatGui, { DatColor } from 'react-dat-gui';
-import { useSnapshot } from 'valtio';
-import { datGUI } from '../utils/Settings';
-import { Scene } from './Scene';
+import React, { lazy, Suspense } from 'react';
+import FPSStats from "react-fps-stats";
+import ThemeSwitch from './ThemeSwitch';
+import Preloader from './Preloader';
 
+const Scene = lazy(() => import("./Scene"));
 
-export const Screen = () => {
-    const snap = useSnapshot(datGUI);
+export default function Screen() {
     return (
         <div id="screen">
-            <DatGui data={snap} onUpdate={(newData) => {
-                for(const [key, value] of Object.entries(newData))
-                    datGUI[key] = value;
-            }}>
-                <DatColor path="color" />
-            </DatGui>
-            <Scene />
+            <FPSStats />
+            <ThemeSwitch />
+            <Suspense fallback={<Preloader/>}>
+                <Scene />
+            </Suspense>
         </div>
     );
-};
+}

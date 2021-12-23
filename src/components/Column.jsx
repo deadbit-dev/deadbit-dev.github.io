@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { Text } from "@react-three/drei";
 import { useSnapshot } from "valtio";
-import { Box } from "./Box";
-import { datGUI } from "../utils/Settings";
+import { preset } from "../utils/preset";
+import fonts from "../utils/fonts";
+import Box from "./Box";
 
 
-export const Column = (props) => {
-    const snap = useSnapshot(datGUI)
+export default function Column(props) {
+    const snapPreset = useSnapshot(preset);
     const [isClick, click] = useState(false);
 
     const reps = Object.entries(props.reps);
@@ -72,15 +73,14 @@ export const Column = (props) => {
                 anchorX="center"
                 anchorY="middle"
                 fontSize={0.07}
-                fillOpacity={0}
-                strokeWidth={'1%'}
-                strokeColor={snap.color}
+                font={fonts["VT323"]}
+                color={snapPreset.darkTheme ? "#fff" : "#000"}
                 position={[0, 0.01, 0]}
                 rotation={[-1.57, 0, 0]}
             >
                 {props.lang}
             </Text>
-            {isClick ? boxes : Column}
+            {isClick || boxes.length == 1 ? boxes : Column}
         </group>
     );
-};
+}

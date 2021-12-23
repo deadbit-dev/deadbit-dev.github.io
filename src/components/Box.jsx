@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Text } from "@react-three/drei";
 import { useSnapshot } from "valtio";
-import { datGUI } from "../utils/Settings";
+import { preset } from "../utils/preset";
+import fonts from "../utils/fonts";
 
 
-export const Box = (props) => {
-    const snap = useSnapshot(datGUI);
+export default function Box(props) {
+    const snapPreset = useSnapshot(preset);
     const [isHover, hover] = useState(false);
 
     const WeightText = (
@@ -13,10 +14,9 @@ export const Box = (props) => {
             name="BoxWeightText"
             anchorX="center"
             anchorY="middle"
-            fontSize={0.06}
-            fillOpacity={0}
-            strokeWidth={'1%'}
-            strokeColor={snap.color}
+            fontSize={0.07}
+            font={fonts["VT323"]}
+            color={snapPreset.darkTheme ? "#fff" : "#000"}
             position={[0, 0, props.size.z * 0.5 + 0.01]}
         >
             {props.weight}%
@@ -31,18 +31,12 @@ export const Box = (props) => {
             onPointerOver={(event) => {
                 event.stopPropagation();
                 hover(true);
-                event.eventObject.children.forEach((value) => {
-                    if(value.name == "BoxMesh")
-                        value.material = props.materials.Hex;
-                });
+                document.body.style.cursor = 'pointer';
             }}
             onPointerOut={(event) => {
                 event.stopPropagation();
                 hover(false);
-                event.eventObject.children.forEach((value) => {
-                    if(value.name == "BoxMesh")
-                        value.material = props.materials.Cube;
-                });
+                document.body.style.cursor = 'grab';
             }}
  
        >
@@ -50,10 +44,10 @@ export const Box = (props) => {
                 name="BoxMesh"
                 castShadow
                 geometry={props.geometry}
-                material={props.materials.Cube}
+                material={snapPreset.darkTheme ? props.materials.dark : props.materials.white}
                 scale={props.scale}
             />
             {isHover ? WeightText : null}
         </group>
     );
-};
+}

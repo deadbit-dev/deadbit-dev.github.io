@@ -1,4 +1,4 @@
-export const API = () => {
+export default function API() {
     return {
         'cpp': {
             'repo3': 55
@@ -17,4 +17,4 @@ export const API = () => {
             'repo2': 17
         }
     };
-};
+}

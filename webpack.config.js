@@ -2,7 +2,11 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: './src/main.jsx',
+    mode: 'production',
+    //mode: 'development',
+    entry: {
+        main: './src/main.jsx',
+    },
     output: {
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, './dist'),
@@ -14,8 +18,8 @@ module.exports = {
             template: './src/assets/template.html'
         }),
     ],
-    mode: 'development',
-    //mode: 'production',
+    
+    
     module: {
         rules: [
             {
