@@ -10,8 +10,7 @@ APP:
     ☐ SCREEN
         ☐ API
         ✔ Settings @done(21-11-28 03:13)
-        ☐ RENDER SYSTEM
-            ✔ @react-three/fiber @done(21-11-17 04:53)
+        ☐ RENDER SYSTEM✔ @react-three/fiber @done(21-11-17 04:53)
             ✔ @react-three/dri @done(21-11-17 04:54)
             ✔ SCENE @done(21-11-20 16:38)
                 ✔ Load mesh @done(21-11-17 04:54)
@@ -39,11 +38,11 @@ APP:
                     ✔ select mesh @done(21-11-20 16:38)
                     ✔ change material for selected mesh @done(21-11-20 19:21)
                     ✔ text weight @done(21-11-28 03:13)
-            ☐ GUI
-                ☐ toggle button for switch color theme dark/white
-                    ☐ color
-                        ☐ material
-                        ☐ text
+            ✔ GUI @done(21-12-23 11:52)
+                ✔ toggle button for switch color theme dark/white @done(21-12-23 11:52)
+                    ✔ color @done(21-12-23 11:52)
+                        ✔ material @done(21-12-23 11:52)
+                        ✔ text @done(21-12-23 11:52)
     
 FIXME:
     ✔ hex mesh center to top @done(21-11-21 01:39)
@@ -58,18 +57,17 @@ FIXME:
     ✔ weight text on column or box while select remove other behaviors @done(21-12-10 04:59)
     ✔ refactor all system by box behaviors component @done(21-12-12 04:43)
     ☐ off rotate and zoom
-    ☐ optimize the bundle module (partition)
-    ☐ check supporting browser
-    ☐ preloader
-        ☐ move preloader system from template to App (react)
-        ☐ asinc preloader
-        ☐ suspense move Screen && Preloader
-    ☐ without forEach maybe better use key
+    ✔ optimize the bundle module (partition) @done(21-12-23 11:52)
+    ✔ check supporting browser @done(21-12-23 15:20)
+    ✔ preloader @done(21-12-23 11:53)
+        ✔ move preloader system from template to App (react) @done(21-12-23 11:52)
+        ✔ asinc preloader @done(21-12-23 11:52)
+        ✔ suspense move Screen && Preloader @done(21-12-23 11:52)
     ☐ add state for column (push boxes only by event and switch state column/boxes)
     
 TODO:
     ✔ setup shader loader @done(21-12-12 04:36)
-    ☐ change cursor
+    ✔ change cursor @done(21-12-23 15:20)
     ☐ shader outline for column by select
     ☐ shader for box by long hold down, smooth animation switch color material box
     ☐ hold columnm to show info and longer hold what be click
