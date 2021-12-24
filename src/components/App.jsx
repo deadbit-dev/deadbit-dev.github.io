@@ -1,11 +1,12 @@
 import React, { lazy, Suspense } from "react";
+import { isWebGLAvailable, isWebGL2Available } from "../utils/webgl";
 import Preloader from "./Preloader";
-import { isWebGL2Available } from "@react-three/drei";
+
 
 const Screen = lazy(() => import("./Screen"));
 
 export default function App() {
-    const isAvailable = isWebGL2Available();
+    const isAvailable = isWebGLAvailable() || isWebGL2Available();
     
     const notSupport = (
         <h2>Not support WebGL from this app :(</h2>

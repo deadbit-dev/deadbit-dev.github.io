@@ -7,11 +7,12 @@ import Box from "./Box";
 
 
 export default function Column(props) {
+    console.log("Column");
     const snapPreset = useSnapshot(preset);
     const [isClick, click] = useState(false);
 
     const reps = Object.entries(props.reps);
-    const startY = props.size.y * 0.5;
+    const startY = 0;
     const boxes = new Array();
     
     let columnWeight = 0;
@@ -75,7 +76,7 @@ export default function Column(props) {
                 fontSize={0.07}
                 font={fonts["VT323"]}
                 color={snapPreset.darkTheme ? "#fff" : "#000"}
-                position={[0, 0.01, 0]}
+                position={[0, 0.01, props.size.x]}
                 rotation={[-1.57, 0, 0]}
             >
                 {props.lang}

@@ -6,6 +6,7 @@ import fonts from "../utils/fonts";
 
 
 export default function Box(props) {
+    console.log("Box");
     const snapPreset = useSnapshot(preset);
     const [isHover, hover] = useState(false);
 

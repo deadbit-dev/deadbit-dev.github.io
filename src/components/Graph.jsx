@@ -16,6 +16,7 @@ const materials = {
 }
 
 export default function Graph() {
+    console.log("Graph");
     const snapPreset = useSnapshot(preset);
     const { nodes } = useGLTF(scene);
     const [response, setResponse] = useState({});
