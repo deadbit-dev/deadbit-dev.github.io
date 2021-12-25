@@ -4,7 +4,7 @@ import { shaderMaterial } from "@react-three/drei";
 import vertexShader from "../assets/shaders/select.vert";
 import fragmentShader from "../assets/shaders/select.frag";
 
-const SelectShader = shaderMaterial(
+const selectShader = shaderMaterial(
     // Uniform
     {
         uColor: new THREE.Color(0.0, 0.0, 0.0)
@@ -15,4 +15,4 @@ const SelectShader = shaderMaterial(
     fragmentShader
 );
 
-export { SelectShader };
+export { selectShader };
