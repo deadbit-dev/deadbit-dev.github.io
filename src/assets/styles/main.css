@@ -6,20 +6,14 @@ body {
   cursor: grab;
 }
 
-@media (orientation: landscape) { 
-  body {
-    background-image:url('../images/bg-turn-device.png');
-    background-size:cover;
-  }
-
-  #screen {
-    display: none;
-  }
-}
-
 #screen {
   width: 100vw;
   height: 100vh;
+}
+
+.turnDeviceNotification {
+  background-image:url('../images/bg-turn-device.png');
+  background-size:cover;
 }
 
 .theme-switch {

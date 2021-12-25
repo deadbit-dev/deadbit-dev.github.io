@@ -6,9 +6,9 @@ import Preloader from "./Preloader";
 const Screen = lazy(() => import("./Screen"));
 
 export default function App() {
-    const isAvailable = isWebGLAvailable() || isWebGL2Available();
-    
-    const notSupport = (
+    const isAvailableWebGL = isWebGLAvailable() || isWebGL2Available();
+
+    const notSupportWebGL = (
         <h2>Not support WebGL from this app :(</h2>
     );
 
@@ -20,7 +20,7 @@ export default function App() {
 
     return (
         <div id="App">
-            { isAvailable ? context : notSupport }
+            { isAvailableWebGL ? context : notSupportWebGL }
         </div>
     );
 }
