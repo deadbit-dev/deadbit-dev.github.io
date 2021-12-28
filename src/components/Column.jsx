@@ -7,7 +7,7 @@ import Box from "./Box";
 
 
 export default function Column(props) {
-    console.log("Column");
+    //console.log("Column");
     const snapPreset = useSnapshot(preset);
     const [isClick, click] = useState(false);
 
@@ -38,12 +38,7 @@ export default function Column(props) {
                 position={[0, (columnPosY - sizeY * 0.5) + props.distY * idx++, 0]}
                 scale={[1, scaleY, 1]}
                 size={props.size}
-                isActive={isClick}
                 weight={weight}
-                onClick={(event) => {
-                    event.stopPropagation();
-                    console.log(rep);
-                }}
             />
         );
     }

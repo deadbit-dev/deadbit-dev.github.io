@@ -6,7 +6,6 @@ import Graph from "./Graph";
 
 
 export default function Scene() {
-    console.log(window.innerHeight);
     return (
         <Canvas
             shadows 

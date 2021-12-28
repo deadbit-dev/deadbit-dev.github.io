@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Vector2, Vector3, Color, MeshStandardMaterial } from "three";
 import { useGLTF } from "@react-three/drei";
 import { useSnapshot } from "valtio";
 import { preset } from "../utils/preset";
-import API from "../utils/API";
 import Column from "./Column";
 import scene from "../assets/models/scene.glb";
 
@@ -16,15 +15,45 @@ const materials = {
 }
 
 export default function Graph() {
-    console.log("Graph");
+    //console.log("Graph");
     const snapPreset = useSnapshot(preset);
     const { nodes } = useGLTF(scene);
-    const [response, setResponse] = useState({});
 
-    useEffect(() => {
-        const response = API();
-        setResponse(response);
-    }, []);
+    // FIXME: 
+    // example
+    const response = {
+        'cpp': {
+            'repo3': 55
+        },
+        'python': {
+            'repo1': 5,
+            'repo2': 15
+        },
+        'js': {
+            'repo2': 25,
+            'repo1': 15
+        },
+        'lua': {
+            'repo3': 32,
+            'repo1': 7,
+            'repo2': 17
+        }
+    };
+
+    // TODO:
+    // owner reps: "https://api.github.com/users/{username}/repos?type=owner"
+    // use lamguages: "https://api.github.com/repos/{username}/{name_repo}/languages"
+
+    fetch("https://api.github.com/users/deadbit-dev/repos?type=owner").then(res => res.json()).then(
+        (result) => {
+            console.log(result);
+            //response = result;
+        },
+        (error) => {
+            console.log(error);
+            //response = error;
+        }
+    )
 
     const dataArray = Object.entries(response);
     const size = new Vector3(

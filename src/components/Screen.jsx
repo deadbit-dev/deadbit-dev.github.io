@@ -8,7 +8,7 @@ const Scene = lazy(() => import("./Scene"));
 export default function Screen() {
     const ref = useRef();
     
-    if(window.screen.orientation){
+    if(window.screen.orientation) {
         const [angle, setAngle] = useState(window.screen.orientation.angle);
         window.screen.orientation.onchange = (event) => {
             setAngle(event.currentTarget.angle);
@@ -35,13 +35,13 @@ export default function Screen() {
             }
         });
     }
-    
+
     return (
         <div 
             ref={ref}
             id="screen"
         >
-            <FPSStats />
+            {/* <FPSStats /> */}
             <ThemeSwitch />
             <Suspense fallback={<Preloader/>}>
                 <Scene />
