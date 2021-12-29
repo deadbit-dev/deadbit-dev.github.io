@@ -1,0 +1,25 @@
+html, 
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  cursor: grab;
+}
+
+#screen {
+  width: 100vw;
+  height: 100vh;
+}
+
+.turnDeviceNotification {
+  background-image:url('../images/bg-turn-device.png');
+  background-size:cover;
+}
+
+.theme-switch {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5%;
+  width: 2em;
+}
